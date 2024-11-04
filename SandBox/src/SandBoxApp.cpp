@@ -1,13 +1,15 @@
+#include "Dua.h"
 
-namespace Dua {
+class Sandbox : public Dua::Application {
+public:
+	Sandbox() {
 
-	__declspec(dllimport) void Print();
+	}
+	~Sandbox() {
 
-}
+	}
+};
 
-int main() {
-
-	Dua::Print();
-
-	return 0;
+Dua::Application* CreateApplication() {
+	return new Sandbox();
 }
