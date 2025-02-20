@@ -2,7 +2,7 @@
 
 #include "Dua/Window.h"
 
-#include <glfw/glfw3.h>
+#include <GLFW/include/glfw3.h>
 
 namespace Dua {
 
