@@ -1,0 +1,3 @@
+[submodule "DuaEngine/vendor/spdlog"]
+	path = DuaEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog

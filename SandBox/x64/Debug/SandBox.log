@@ -1,2 +1,1 @@
-﻿SandBoxApp.obj : error LNK2019: 无法解析的外部符号 "class Dua::Application * __cdecl Dua::CreateApplication(void)" (?CreateApplication@Dua@@YAPEAVApplication@1@XZ)，函数 main 中引用了该符号
-D:\DUA\Github\DuaEngine\x64\Debug\SandBox.exe : fatal error LNK1120: 1 个无法解析的外部命令
+﻿  SandBox.vcxproj -> D:\DUA\Github\DuaEngine\x64\Debug\SandBox.exe
