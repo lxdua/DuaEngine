@@ -2,4 +2,5 @@ D:\DUA\Github\DuaEngine\DuaEngine\src\Dua\LayerStack.cpp;D:\DUA\Github\DuaEngine
 D:\DUA\Github\DuaEngine\DuaEngine\src\Dua\Layer.cpp;D:\DUA\Github\DuaEngine\DuaEngine\x64\Debug\Layer.obj
 D:\DUA\Github\DuaEngine\DuaEngine\src\duapch.cpp;D:\DUA\Github\DuaEngine\DuaEngine\x64\Debug\duapch.obj
 D:\DUA\Github\DuaEngine\DuaEngine\src\Dua\Application.cpp;D:\DUA\Github\DuaEngine\DuaEngine\x64\Debug\Application.obj
+D:\DUA\Github\DuaEngine\DuaEngine\src\glad.c;D:\DUA\Github\DuaEngine\DuaEngine\x64\Debug\glad.obj
 D:\DUA\Github\DuaEngine\DuaEngine\src\Platform\Windows\WindowsWindow.cpp;D:\DUA\Github\DuaEngine\DuaEngine\x64\Debug\WindowsWindow.obj

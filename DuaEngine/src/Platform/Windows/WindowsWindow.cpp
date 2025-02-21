@@ -5,6 +5,9 @@
 #include "Dua/Events/KeyEvent.h"
 #include "Dua/Events/MouseEvent.h"
 
+#include <GLAD/glad.h>
+#include <GLFW/glfw3.h>
+
 namespace Dua {
 
 	static bool s_GLFWInitialized = false;
@@ -26,7 +29,11 @@ namespace Dua {
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
-			if (!success) { std::cout << success << " Could not initialize GLFW!" << std::endl; }
+			
+			std::cout << success
+				<< (success ? " GLFW was successfully initialized" : " Could not initialize GLFW!")
+				<< std::endl;
+
 			glfwSetErrorCallback([](int error_code, const char* description)
 				{
 					std::cout << "GLFW Error (" << error_code << "): " << description << std::endl;
@@ -43,6 +50,12 @@ namespace Dua {
 			nullptr
 		);
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		std::cout << status
+			<< (status ? " Glad was successfully initialized" : " Failed to initialize Glad!")
+			<< std::endl;
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

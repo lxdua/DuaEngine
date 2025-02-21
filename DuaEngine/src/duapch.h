@@ -1,6 +1,6 @@
 #pragma once
 
-//#include <stdio.h>
+#include <stdio.h>
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -12,6 +12,8 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+#include <stdlib.h>
 
 #ifdef DUA_PLATFORM_WINDOWS
 #include <Windows.h>
