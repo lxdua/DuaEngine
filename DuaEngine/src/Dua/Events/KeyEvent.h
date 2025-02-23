@@ -8,18 +8,19 @@ namespace Dua {
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
-
+		inline int GetScanCode() const { return m_ScanCode; }
+		
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 
 	protected:
-		KeyEvent(int keycode) : m_KeyCode(keycode) {}
-		int m_KeyCode;
+		KeyEvent(int keycode, int scancode) : m_KeyCode(keycode), m_ScanCode(scancode) {}
+		int m_KeyCode, m_ScanCode;
 	};
 
 	class DUA_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+		KeyPressedEvent(int keycode, int scancode, int repeatCount) : KeyEvent(keycode, scancode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
 
@@ -39,7 +40,7 @@ namespace Dua {
 	class DUA_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
+		KeyReleasedEvent(int keycode, int scancode) : KeyEvent(keycode, scancode) {}
 
 		std::string ToString() const override
 		{
