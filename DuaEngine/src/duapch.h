@@ -15,6 +15,8 @@
 
 #include <stdlib.h>
 
+#include <stdint.h>
+
 #ifdef DUA_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

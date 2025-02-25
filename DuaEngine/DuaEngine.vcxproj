@@ -34,6 +34,11 @@
     <ClInclude Include="3rdparty\ImGui\imstb_textedit.h" />
     <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
     <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
+    <ClInclude Include="src\Dua\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dua\Renderer\Renderer.h" />
+    <ClInclude Include="src\Dua\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Dua\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Dua\Input.h" />
     <ClInclude Include="src\Dua\InputCodes.h" />
@@ -51,6 +56,7 @@
     <ClInclude Include="src\Dua\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Dua\Renderer\GraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_glfw.cpp">
@@ -139,6 +145,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Dua\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Dua\LayerStack.cpp" />
     <ClCompile Include="src\Dua\Layer.cpp" />
@@ -149,7 +160,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Dua\Application.cpp" />
-    <ClCompile Include="src\glad.c">
+    <ClCompile Include="3rdparty\GLAD\glad.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>

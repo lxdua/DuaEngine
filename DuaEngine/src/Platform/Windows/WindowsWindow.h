@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Dua/Window.h"
+#include "Dua/Renderer/GraphicsContext.h"
 
 struct GLFWwindow;
 
@@ -28,6 +29,7 @@ namespace Dua {
 		virtual void Shutdown();
 
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

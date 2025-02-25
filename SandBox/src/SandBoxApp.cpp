@@ -19,7 +19,8 @@ public:
 
 };
 
-class Sandbox : public Dua::Application {
+class Sandbox : public Dua::Application
+{
 public:
 
 	Sandbox()
@@ -33,6 +34,7 @@ public:
 	}
 };
 
-Dua::Application* Dua::CreateApplication() {
+Dua::Application* Dua::CreateApplication()
+{
 	return new Sandbox();
 }

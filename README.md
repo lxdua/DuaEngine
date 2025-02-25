@@ -1,13 +1,13 @@
 # [DuaEngine] 🎮
 
-一个基于 **C++** 和 **OpenGL** 的玩具游戏引擎，做着玩图一乐。
+一个基于 **C++** 和 **OpenGL** 的图一乐 游戏/渲染 引擎。
 
 ---
 
 ## 🛠️ 技术栈
 
 - **语言**: C++17
-- **图形API**: OpenGL
+- **图形API**: OpenGL3，以后可能加上Vulkan
 - **UI框架**: ImGui Docking
 - **窗口管理**: GLFW
 - **数学库**: GLM
@@ -16,9 +16,8 @@
 
 ---
 
-## 📥 安装与运行
+## 📥 依赖项
 
-### 依赖项
 - **Visual Studio 2022**
 - [GLFW](https://www.glfw.org)
 - [GLEW](http://glew.sourceforge.net)
