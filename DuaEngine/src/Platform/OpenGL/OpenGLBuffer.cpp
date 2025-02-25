@@ -29,6 +29,16 @@ namespace Dua {
 		return glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
+	void OpenGLVertexBuffer::SetLayout(const BufferLayout& layout)
+	{
+		m_Layout = layout;
+	}
+
+	const BufferLayout& OpenGLVertexBuffer::GetLayout() const
+	{
+		return m_Layout;
+	}
+
 	// IndexBuffer
 
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)

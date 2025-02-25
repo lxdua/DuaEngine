@@ -12,6 +12,25 @@ namespace Dua {
 
 	Application* Application::s_Instance = nullptr;
 
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
+	{
+		switch (type)
+		{
+		case ShaderDataType::Int: return GL_INT;
+		case ShaderDataType::Int2: return GL_INT;
+		case ShaderDataType::Int3: return GL_INT;
+		case ShaderDataType::Int4: return GL_INT;
+		case ShaderDataType::Float: return GL_FLOAT;
+		case ShaderDataType::Float2: return GL_FLOAT;
+		case ShaderDataType::Float3: return GL_FLOAT;
+		case ShaderDataType::Float4: return GL_FLOAT;
+		//case ShaderDataType::Mat3: return GL_FLOAT;
+		//case ShaderDataType::Mat4: return GL_FLOAT;
+		case ShaderDataType::Bool: return GL_BOOL;
+		}
+
+	}
+
 	Application::Application()
 	{
 		s_Instance = this;
@@ -38,18 +57,25 @@ namespace Dua {
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
+		BufferLayout layout = {
+			{ ShaderDataType::Float3, "a_Position" }
+		};
+		//m_VertexArray->SetLayout();
 
-		// 配置顶点属性指针（告诉OpenGL如何解析顶点数据）
-		// 位置属性（location = 0），每个顶点由3个float值组成（x,y,z）
-		glEnableVertexAttribArray(0); // 启用顶点属性位置0
-		glVertexAttribPointer(
-			0,                 // 属性位置索引（对应shader中的location）
-			3,                 // 每个顶点的分量数量（x,y,z）
-			GL_FLOAT,          // 数据类型
-			GL_FALSE,          // 是否标准化（不需要）
-			3 * sizeof(float), // 步长（连续顶点之间的字节偏移）
-			nullptr             // 数据起始位置的偏移量（0表示从缓冲区开始）
-		);
+		uint32_t index = 0;
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(
+				index,
+				element.GetComponentCount(),
+				ShaderDataTypeToOpenGLBaseType(element.Type),
+				element.Normalized ? GL_TRUE : GL_FALSE,
+				layout.GetStride(),
+				(const void*)element.Offset
+			);
+			index++;
+		}
 
 		unsigned int indices[3] = { 0,1,2 };
 
