@@ -28,7 +28,6 @@ namespace Dua {
 		//case ShaderDataType::Mat4: return GL_FLOAT;
 		case ShaderDataType::Bool: return GL_BOOL;
 		}
-
 	}
 
 	Application::Application()
@@ -47,23 +46,23 @@ namespace Dua {
 		glGenVertexArrays(1, &m_VertexArray); // 生成1个VAO
 		glBindVertexArray(m_VertexArray);     // 绑定VAO，后续操作将作用于这个VAO
 
-		// 定义三角形的三个顶点坐标（x,y,z）
-		// 每个顶点3个float值，共3个顶点组成一个三角形
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,  // 左下顶点
-			 0.5f, -0.5f, 0.0f,  // 右下顶点
-			 0.0f,  0.5f, 0.0f   // 顶部顶点
+
+		float vertices[3 * 7] = {
+			-0.5f, -0.5f, 0.0f,  0.8f, 0.2f, 0.8f, 1.0f,
+			 0.5f, -0.5f, 0.0f,  0.2f, 0.3f, 0.8f, 1.0f, 
+			 0.0f,  0.5f, 0.0f,  0.8f, 0.8f, 0.2f, 1.0f
 		};
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		BufferLayout layout = {
-			{ ShaderDataType::Float3, "a_Position" }
-		};
-		//m_VertexArray->SetLayout();
+		m_VertexBuffer->SetLayout({
+			{ ShaderDataType::Float3, "a_pos" },
+			{ ShaderDataType::Float4, "a_color" }
+		});
 
 		uint32_t index = 0;
-		for (const auto& element : layout)
+		const BufferLayout& layout = m_VertexBuffer->GetLayout();
+		for (const auto& element : layout.GetElements())
 		{
 			glEnableVertexAttribArray(index);
 			glVertexAttribPointer(
@@ -80,18 +79,21 @@ namespace Dua {
 		unsigned int indices[3] = { 0,1,2 };
 
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, 3));
-
 		
 		std::string vertexSrc = R"(
 			#version 330 core
 
-			layout(location = 0) in vec3 pos;
-			out vec3 o_pos;
+			layout(location = 0) in vec3 a_pos;
+			layout(location = 1) in vec4 a_color;
+
+			out vec3 v_pos;
+			out vec4 v_color;
 			
 			void main()
 			{
-				o_pos = pos * -1;
-				gl_Position = vec4(pos * -1, 1.0);
+				v_pos = a_pos;
+				v_color = a_color;
+				gl_Position = vec4(a_pos, 1.0);
 			}
 		)";
 
@@ -99,11 +101,12 @@ namespace Dua {
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
-			in vec3 o_pos;
+			in vec3 v_pos;
+			in vec4 v_color;
 
 			void main()
 			{
-				color = vec4(o_pos * 0.5 + 0.5, 1.0);
+				color = v_color;
 			}
 		)";
 

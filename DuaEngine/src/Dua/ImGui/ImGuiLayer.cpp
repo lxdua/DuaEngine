@@ -50,7 +50,7 @@ namespace Dua {
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		ImGui_ImplOpenGL3_Init(glsl_version);
 
-		// 支持中文 使用黑体
+		// Support Chinese characters in simhei
 		io.Fonts->AddFontFromFileTTF(
 			"C:\\Windows\\Fonts\\simhei.ttf",
 			16.0f,
