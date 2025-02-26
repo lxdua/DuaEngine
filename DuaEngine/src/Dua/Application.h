@@ -23,13 +23,13 @@ namespace Dua {
 		Application();
 		virtual ~Application();
 
-		inline static Application& GetSingleton();
+		static Application& GetSingleton();
 
 		void Run();
 
 		void OnEvent(Event& e);
 
-		inline Window& GetWindow();
+		Window& GetWindow();
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
