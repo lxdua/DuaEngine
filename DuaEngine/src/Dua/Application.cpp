@@ -14,24 +14,6 @@ namespace Dua {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-		case ShaderDataType::Int: return GL_INT;
-		case ShaderDataType::Int2: return GL_INT;
-		case ShaderDataType::Int3: return GL_INT;
-		case ShaderDataType::Int4: return GL_INT;
-		case ShaderDataType::Float: return GL_FLOAT;
-		case ShaderDataType::Float2: return GL_FLOAT;
-		case ShaderDataType::Float3: return GL_FLOAT;
-		case ShaderDataType::Float4: return GL_FLOAT;
-		//case ShaderDataType::Mat3: return GL_FLOAT;
-		//case ShaderDataType::Mat4: return GL_FLOAT;
-		case ShaderDataType::Bool: return GL_BOOL;
-		}
-	}
-
 	Application::Application()
 	{
 		s_Instance = this;
@@ -41,13 +23,10 @@ namespace Dua {
 
 		m_ImGuiLayer = new ImGuiLayer;
 		PushOverlay(m_ImGuiLayer);
-		
 
-		// 生成并绑定顶点数组对象(VAO)，用于存储顶点属性配置
-		// VAO可以一次性保存多个VBO和顶点属性指针的配置，方便后续快速切换
-		glGenVertexArrays(1, &m_VertexArray); // 生成1个VAO
-		glBindVertexArray(m_VertexArray);     // 绑定VAO，后续操作将作用于这个VAO
+		//////////////////////////////////////////////////
 
+		m_VertexArray.reset(VertexArray::Create());
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f,  0.8f, 0.2f, 0.8f, 1.0f,
@@ -55,33 +34,21 @@ namespace Dua {
 			 0.0f,  0.5f, 0.0f,  0.8f, 0.8f, 0.2f, 1.0f
 		};
 
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		m_VertexBuffer->SetLayout({
+		BufferLayout layout = {
 			{ ShaderDataType::Float3, "a_pos" },
 			{ ShaderDataType::Float4, "a_color" }
-		});
+		};
+		m_VertexBuffer->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
-		uint32_t index = 0;
-		const BufferLayout& layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout.GetElements())
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(
-				index,
-				element.GetComponentCount(),
-				ShaderDataTypeToOpenGLBaseType(element.Type),
-				element.Normalized ? GL_TRUE : GL_FALSE,
-				layout.GetStride(),
-				(const void*)element.Offset
-			);
-			index++;
-		}
-
-		unsigned int indices[3] = { 0,1,2 };
-
+		unsigned int indices[3] = { 0, 1, 2 };
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, 3));
-		
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+
 		std::string vertexSrc = R"(
 			#version 330 core
 
@@ -113,6 +80,58 @@ namespace Dua {
 		)";
 
 		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
+
+		//////////////////////////////////////////////////
+
+		m_SquareVA.reset(VertexArray::Create());
+
+		float sq_vertices[4 * 3] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
+		};
+
+		std::shared_ptr<VertexBuffer> squareVB;
+		squareVB.reset(VertexBuffer::Create(sq_vertices, sizeof(sq_vertices)));
+		BufferLayout sq_layout = {
+			{ ShaderDataType::Float3, "a_pos" }
+		};
+		squareVB->SetLayout(sq_layout);
+		m_SquareVA->AddVertexBuffer(squareVB);
+
+		unsigned int sq_indices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(sq_indices, 6));
+		m_SquareVA->SetIndexBuffer(squareIB);
+
+		std::string sq_vertexSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_pos;
+
+			out vec3 v_pos;
+			
+			void main()
+			{
+				v_pos = a_pos;
+				gl_Position = vec4(a_pos, 1.0);
+			}
+		)";
+
+		std::string sq_fragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+			in vec3 v_pos;
+
+			void main()
+			{
+				color = vec4(0.2, 0.3, 0.8, 1.0);
+			}
+		)";
+
+		m_SquareShader.reset(new Shader(sq_vertexSrc, sq_fragmentSrc));
 	}
 
 	Application::~Application()
@@ -132,10 +151,13 @@ namespace Dua {
 			glClearColor(57/255.0, 197/255.0, 187/255.0, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			m_Shader->Bind();
+			m_SquareShader->Bind();
+			m_SquareVA->Bind();
+			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_Shader->Bind();
+			m_VertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

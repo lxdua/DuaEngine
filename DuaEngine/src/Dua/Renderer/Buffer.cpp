@@ -10,7 +10,7 @@ namespace Dua {
 
 	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size)
 	{
-		switch (Renderer::GetRendererAPI())
+		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::None:
 			return nullptr;
@@ -24,7 +24,7 @@ namespace Dua {
 
 	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
 	{
-		switch (Renderer::GetRendererAPI())
+		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::None:
 			return nullptr;

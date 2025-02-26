@@ -37,6 +37,7 @@
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
     <ClInclude Include="src\Dua\Renderer\Renderer.h" />
     <ClInclude Include="src\Dua\Renderer\Shader.h" />
+    <ClInclude Include="src\Dua\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Dua\ImGui\ImGuiLayer.h" />
@@ -54,6 +55,7 @@
     <ClInclude Include="src\Dua.h" />
     <ClInclude Include="src\Dua\EntryPoint.h" />
     <ClInclude Include="src\Dua\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Dua\Renderer\GraphicsContext.h" />
@@ -148,6 +150,7 @@
     <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Dua\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Dua\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Dua\ImGui\ImGuiLayer.cpp" />
@@ -166,6 +169,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>

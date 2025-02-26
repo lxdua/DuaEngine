@@ -10,7 +10,7 @@ namespace Dua {
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetRendererAPI() { return s_RendererAPI; }
+		static RendererAPI GetAPI();
 	private:
 		static RendererAPI s_RendererAPI;
 	};
