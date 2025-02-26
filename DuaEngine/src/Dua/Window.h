@@ -1,9 +1,10 @@
 #pragma once
 
-#include "duapch.h"
-
-#include "Dua/Core.h"
 #include "Dua/Events/Event.h"
+
+#include <iostream>
+#include <string>
+#include <functional>
 
 namespace Dua {
 
@@ -19,7 +20,7 @@ namespace Dua {
 		) : Title(title), Width(width), Height(height) {}
 	};
 
-	class DUA_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

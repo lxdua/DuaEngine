@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Dua/Core.h"
-
 namespace Dua {
 
 	enum class RendererAPI
@@ -9,7 +7,7 @@ namespace Dua {
 		None = 0, OpenGL, Direct3D, Vulkan
 	};
 
-	class DUA_API Renderer
+	class Renderer
 	{
 	public:
 		inline static RendererAPI GetRendererAPI() { return s_RendererAPI; }

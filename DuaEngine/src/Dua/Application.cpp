@@ -10,6 +10,8 @@
 
 namespace Dua {
 
+#define DUA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
 	Application* Application::s_Instance = nullptr;
 
 	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)

@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Dua/Core.h"
 #include "Dua/Events/Event.h"
 
 namespace Dua {
 
-	class DUA_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");

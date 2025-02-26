@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Dua/Core.h"
-
 #include "Dua/Window.h"
 
 #include "Dua/LayerStack.h"
@@ -17,7 +15,7 @@
 
 namespace Dua {
 
-	class DUA_API Application
+	class Application
 	{
 	public:
 		Application();

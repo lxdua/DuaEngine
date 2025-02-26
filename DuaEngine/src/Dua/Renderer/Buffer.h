@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Dua/Core.h"
-
 namespace Dua {
 
 	enum class ShaderDataType
@@ -32,7 +30,7 @@ namespace Dua {
 		}
 	}
 
-	struct DUA_API BufferElement
+	struct BufferElement
 	{
 		ShaderDataType Type;
 		std::string Name;
@@ -65,7 +63,7 @@ namespace Dua {
 		}
 	};
 
-	class DUA_API BufferLayout
+	class BufferLayout
 	{
 	public:
 		BufferLayout() {}
@@ -100,7 +98,7 @@ namespace Dua {
 		uint32_t m_Stride = 0;
 	};
 
-	class DUA_API VertexBuffer
+	class VertexBuffer
 	{
 	public:
 		virtual ~VertexBuffer() {}
@@ -114,7 +112,7 @@ namespace Dua {
 		static VertexBuffer* Create(float* vertices, uint32_t size);
 	};
 
-	class DUA_API IndexBuffer
+	class IndexBuffer
 	{
 	public:
 		virtual ~IndexBuffer() {}

@@ -4,7 +4,7 @@
 
 namespace Dua {
 
-	class DUA_API OpenGLVertexBuffer : public VertexBuffer
+	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
@@ -21,7 +21,7 @@ namespace Dua {
 		BufferLayout m_Layout;
 	};
 
-	class DUA_API OpenGLIndexBuffer : public IndexBuffer
+	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:
 		OpenGLIndexBuffer(uint32_t* indices, uint32_t size);

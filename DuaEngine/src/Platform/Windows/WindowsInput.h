@@ -1,11 +1,10 @@
 #pragma once
 
-
 #include "Dua/Input.h"
 
 namespace Dua {
 
-	class DUA_API WindowsInput : public Input
+	class WindowsInput : public Input
 	{
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) override;

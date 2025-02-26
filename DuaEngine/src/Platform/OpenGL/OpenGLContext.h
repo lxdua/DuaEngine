@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Dua/Core.h"
 #include "Dua/Renderer/GraphicsContext.h"
 
 #include <GLAD/glad.h>
@@ -8,7 +7,7 @@
 
 namespace Dua {
 
-	class DUA_API OpenGLContext : public GraphicsContext
+	class OpenGLContext : public GraphicsContext
 	{
 	public:
 		OpenGLContext(GLFWwindow* window);

@@ -4,7 +4,7 @@
 
 namespace Dua {
 
-	class DUA_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
@@ -26,7 +26,7 @@ namespace Dua {
 		float m_MouseX, m_MouseY;
 	};
 
-	class DUA_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float x, float y) : m_XOffset(x), m_YOffset(y) {}
@@ -48,7 +48,7 @@ namespace Dua {
 		float m_XOffset, m_YOffset;
 	};
 
-	class DUA_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -60,7 +60,7 @@ namespace Dua {
 		int m_Button;
 	};
 
-	class DUA_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
@@ -75,7 +75,7 @@ namespace Dua {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class DUA_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}

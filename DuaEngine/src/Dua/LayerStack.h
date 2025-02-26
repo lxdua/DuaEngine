@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Dua/Core.h"
 #include "Layer.h"
 
 #include <vector>
 
 namespace Dua {
 
-	class DUA_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

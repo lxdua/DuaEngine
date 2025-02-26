@@ -4,7 +4,7 @@
 
 namespace Dua {
 
-	class DUA_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -17,7 +17,7 @@ namespace Dua {
 		int m_KeyCode, m_ScanCode;
 	};
 
-	class DUA_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int scancode, int repeatCount) : KeyEvent(keycode, scancode), m_RepeatCount(repeatCount) {}
@@ -37,7 +37,7 @@ namespace Dua {
 		int m_RepeatCount;
 	};
 
-	class DUA_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode, int scancode) : KeyEvent(keycode, scancode) {}

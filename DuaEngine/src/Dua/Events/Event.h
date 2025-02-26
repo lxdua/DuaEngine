@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Dua/Core.h"
-
 namespace Dua {
 
 	enum class EventType
@@ -13,6 +11,7 @@ namespace Dua {
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
+#define BIT(x) (1 << x)
 	enum EventCategory
 	{
 		None = 0,
@@ -31,7 +30,7 @@ namespace Dua {
 #define EVENT_CLASS_CATEGORY(category) \
 	virtual int GetCategoryFlags() const override { return category; }
 
-	class DUA_API Event
+	class Event
 	{
 		friend class EventDispatcher;
 

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Dua/Core.h"
-
 #include <string>
 
 namespace Dua {
 
-	class DUA_API Shader
+	class Shader
 	{
 	public:
 		Shader(const std::string& vertexSource, std::string& fragmentSource);
