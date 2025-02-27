@@ -3,11 +3,25 @@
 
 namespace Dua {
 
-	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
-
-	RendererAPI Renderer::GetAPI()
+	RendererAPI::API Renderer::GetAPI()
 	{
-		return s_RendererAPI;
+		return RendererAPI::GetAPI();
+	}
+
+	void Renderer::BeginScene()
+	{
+
+	}
+
+	void Renderer::EndScene()
+	{
+
+	}
+
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)
+	{
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
 	}
 
 }

@@ -35,7 +35,9 @@
     <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
     <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dua\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Dua\Renderer\Renderer.h" />
+    <ClInclude Include="src\Dua\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Dua\Renderer\Shader.h" />
     <ClInclude Include="src\Dua\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
@@ -55,6 +57,7 @@
     <ClInclude Include="src\Dua.h" />
     <ClInclude Include="src\Dua\EntryPoint.h" />
     <ClInclude Include="src\Dua\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -148,7 +151,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Dua\Renderer\Shader.cpp" />
     <ClCompile Include="src\Dua\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
@@ -169,6 +174,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />

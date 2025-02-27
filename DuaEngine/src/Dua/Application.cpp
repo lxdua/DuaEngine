@@ -2,11 +2,9 @@
 #include "Application.h"
 
 #include "Dua/Input.h"
+#include "Dua/Renderer/Renderer.h"
 
 #include "GLM/glm.hpp"
-
-#include <GLAD/glad.h>
-#include <GLFW/glfw3.h>
 
 namespace Dua {
 
@@ -148,16 +146,18 @@ namespace Dua {
 	{
 		while (m_running)
 		{
-			glClearColor(57/255.0, 197/255.0, 187/255.0, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 57 / 255.0, 197 / 255.0, 187 / 255.0, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_SquareShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
