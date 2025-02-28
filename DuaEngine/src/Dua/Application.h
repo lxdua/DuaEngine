@@ -14,6 +14,8 @@
 #include "Dua/Renderer/Buffer.h"
 #include "Dua/Renderer/VertexArray.h"
 
+#include "Dua/Renderer/OrthographicCamera.h"
+
 namespace Dua {
 
 	class Application
@@ -46,6 +48,8 @@ namespace Dua {
 
 		std::shared_ptr<Shader> m_SquareShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 		bool OnWindowClose(WindowCloseEvent& e);
 

@@ -35,6 +35,7 @@
     <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
     <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Dua\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Dua\Renderer\Renderer.h" />
     <ClInclude Include="src\Dua\Renderer\RendererAPI.h" />
@@ -151,6 +152,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Dua\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Dua\Renderer\RendererAPI.cpp" />

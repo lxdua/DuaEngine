@@ -2,8 +2,8 @@
 
 #include "Dua/Renderer/GraphicsContext.h"
 
-#include <GLAD/glad.h>
-#include <GLFW/glfw3.h>
+#include "GLAD/glad.h"
+#include "GLFW/glfw3.h"
 
 namespace Dua {
 

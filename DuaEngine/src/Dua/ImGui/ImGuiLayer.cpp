@@ -10,7 +10,7 @@
 
 #include "Platform/Windows/WindowsWindow.h"
 
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
 namespace Dua {
 

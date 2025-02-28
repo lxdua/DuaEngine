@@ -12,7 +12,7 @@ namespace Dua {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application() : m_Camera(-1.28f, 1.28f, -0.72f, 0.72f)
 	{
 		s_Instance = this;
 
@@ -53,6 +53,8 @@ namespace Dua {
 			layout(location = 0) in vec3 a_pos;
 			layout(location = 1) in vec4 a_color;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_pos;
 			out vec4 v_color;
 			
@@ -60,7 +62,7 @@ namespace Dua {
 			{
 				v_pos = a_pos;
 				v_color = a_color;
-				gl_Position = vec4(a_pos, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_pos, 1.0);
 			}
 		)";
 
@@ -108,12 +110,14 @@ namespace Dua {
 
 			layout(location = 0) in vec3 a_pos;
 
+			uniform mat4 u_ViewProjection;			
+
 			out vec3 v_pos;
 			
 			void main()
 			{
 				v_pos = a_pos;
-				gl_Position = vec4(a_pos, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_pos, 1.0);
 			}
 		)";
 
@@ -149,13 +153,13 @@ namespace Dua {
 			RenderCommand::SetClearColor({ 57 / 255.0, 197 / 255.0, 187 / 255.0, 1 });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
+			m_Camera.SetRotaetion(45.0f);
+			m_Camera.SetPosition({ 0.7f, 0.0f, 0.0f });
 
-			m_SquareShader->Bind();
-			Renderer::Submit(m_SquareVA);
+			Renderer::BeginScene(m_Camera);
 
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
+			Renderer::Submit(m_SquareShader, m_SquareVA);
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
 

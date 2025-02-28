@@ -1,7 +1,7 @@
 #include "duapch.h"
 #include "OpenGLRendererAPI.h"
 
-#include <GLAD/glad.h>
+#include "GLAD/glad.h"
 
 namespace Dua {
 
