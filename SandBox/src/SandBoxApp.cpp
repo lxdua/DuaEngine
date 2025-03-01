@@ -1,6 +1,7 @@
 #include "duapch.h"
 #include "Dua.h"
 
+#include <glm/gtc/matrix_transform.hpp>
 
 class ExampleLayer : public Dua::Layer
 {
@@ -15,10 +16,13 @@ private:
 	Dua::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPos;
 
+	glm::vec3 m_SquarePos;
+
 public:
 	ExampleLayer() : Layer("Example"),
 		m_Camera(-1.28f, 1.28f, -0.72f, 0.72f),
-		m_CameraPos(0.0f)
+		m_CameraPos(0.0f),
+		m_SquarePos(0.0f)
 	{
 	m_VertexArray.reset(Dua::VertexArray::Create());
 
@@ -50,6 +54,7 @@ public:
 			layout(location = 1) in vec4 a_color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_pos;
 			out vec4 v_color;
@@ -58,7 +63,7 @@ public:
 			{
 				v_pos = a_pos;
 				v_color = a_color;
-				gl_Position = u_ViewProjection * vec4(a_pos, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_pos, 1.0);
 			}
 		)";
 
@@ -106,14 +111,15 @@ public:
 
 			layout(location = 0) in vec3 a_pos;
 
-			uniform mat4 u_ViewProjection;			
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;	
 
 			out vec3 v_pos;
 			
 			void main()
 			{
 				v_pos = a_pos;
-				gl_Position = u_ViewProjection * vec4(a_pos, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_pos, 1.0);
 			}
 		)";
 
@@ -132,20 +138,31 @@ public:
 		m_SquareShader.reset(new Dua::Shader(sq_vertexSrc, sq_fragmentSrc));
 	}
 
-	void OnUpdate(Dua::Timestep ts) override
+	void OnUpdate(Dua::Timestep delta) override
 	{
-		std::cout << "delta: " << ts.GetSecond() << std::endl;
-		std::cout << "fps: " << 1.0f / ts.GetSecond() << std::endl;
+		//std::cout << "delta: " << ts.GetSecond() << std::endl;
+		//std::cout << "fps: " << 1.0f / ts.GetSecond() << std::endl;
 
 		Dua::RenderCommand::SetClearColor({ 57 / 255.0, 197 / 255.0, 187 / 255.0, 1 });
 		Dua::RenderCommand::Clear();
+
+		if (Dua::Input::IsKeyPressed(DUA_KEY_A))
+		{
+			m_SquarePos.x -= 0.1f * delta;
+		}
+		if (Dua::Input::IsKeyPressed(DUA_KEY_D))
+		{
+			m_SquarePos.x += 0.1f * delta;
+		}
 
 		m_Camera.SetPosition(m_CameraPos);
 		m_Camera.SetRotaetion(45.0f);
 
 		Dua::Renderer::BeginScene(m_Camera);
 
-		Dua::Renderer::Submit(m_SquareShader, m_SquareVA);
+		glm::mat4 squaretrans = glm::translate(glm::mat4(1.0f), m_SquarePos);
+
+		Dua::Renderer::Submit(m_SquareShader, m_SquareVA, squaretrans);
 		Dua::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Dua::Renderer::EndScene();
