@@ -132,8 +132,11 @@ public:
 		m_SquareShader.reset(new Dua::Shader(sq_vertexSrc, sq_fragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Dua::Timestep ts) override
 	{
+		std::cout << "delta: " << ts.GetSecond() << std::endl;
+		std::cout << "fps: " << 1.0f / ts.GetSecond() << std::endl;
+
 		Dua::RenderCommand::SetClearColor({ 57 / 255.0, 197 / 255.0, 187 / 255.0, 1 });
 		Dua::RenderCommand::Clear();
 

@@ -1,23 +1,21 @@
 #pragma once
 
 #include "Dua/Window.h"
-
+#include "Dua/Core/Timestep.h"
+#include "Dua/Events/Event.h"
 #include "Dua/LayerStack.h"
 #include "Dua/ImGui/ImGuiLayer.h"
 
-#include "Dua/Input.h"
-#include "Dua/InputCodes.h"
 
-#include "Dua/Events/Event.h"
-#include "Dua/Events/ApplicationEvent.h"
-#include "Dua/Events/KeyEvent.h"
-#include "Dua/Events/MouseEvent.h"
-
-#include "Dua/Renderer/Shader.h"
-#include "Dua/Renderer/Buffer.h"
-#include "Dua/Renderer/VertexArray.h"
-
-#include "Dua/Renderer/OrthographicCamera.h"
+//#include "Dua/Input.h"
+//#include "Dua/InputCodes.h"
+//#include "Dua/Events/ApplicationEvent.h"
+//#include "Dua/Events/KeyEvent.h"
+//#include "Dua/Events/MouseEvent.h"
+//#include "Dua/Renderer/Shader.h"
+//#include "Dua/Renderer/Buffer.h"
+//#include "Dua/Renderer/VertexArray.h"
+//#include "Dua/Renderer/OrthographicCamera.h"
 
 #define DUA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
@@ -47,6 +45,8 @@ namespace Dua {
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
+		
+		float m_LastFrameTime = 0.0f;
 
 		bool OnWindowClose(WindowCloseEvent& e);
 

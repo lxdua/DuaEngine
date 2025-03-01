@@ -34,6 +34,7 @@
     <ClInclude Include="3rdparty\ImGui\imstb_textedit.h" />
     <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
     <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
+    <ClInclude Include="src\Dua\Core\Timestep.h" />
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
     <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Dua\Renderer\RenderCommand.h" />

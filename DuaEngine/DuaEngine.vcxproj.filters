@@ -147,6 +147,9 @@
     <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dua\Core\Timestep.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dua\Application.cpp">
