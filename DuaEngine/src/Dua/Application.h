@@ -5,6 +5,9 @@
 #include "Dua/LayerStack.h"
 #include "Dua/ImGui/ImGuiLayer.h"
 
+#include "Dua/Input.h"
+#include "Dua/InputCodes.h"
+
 #include "Dua/Events/Event.h"
 #include "Dua/Events/ApplicationEvent.h"
 #include "Dua/Events/KeyEvent.h"
@@ -15,6 +18,8 @@
 #include "Dua/Renderer/VertexArray.h"
 
 #include "Dua/Renderer/OrthographicCamera.h"
+
+#define DUA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
 namespace Dua {
 
@@ -42,14 +47,6 @@ namespace Dua {
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_SquareShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 
 		bool OnWindowClose(WindowCloseEvent& e);
 
