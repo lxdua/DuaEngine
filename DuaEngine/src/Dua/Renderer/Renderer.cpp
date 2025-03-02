@@ -1,6 +1,8 @@
 #include "duapch.h"
 #include "Renderer.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 namespace Dua {
 
 	glm::mat4 Renderer::m_VPMatrix = *(new glm::mat4);
@@ -27,8 +29,10 @@ namespace Dua {
 	)
 	{
 		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjection", m_VPMatrix);
-		shader->UploadUniformMat4("u_Transform", transform);
+		
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_VPMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
+		
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}

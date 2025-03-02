@@ -2,6 +2,9 @@
 #include "Dua.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include "Platform/OpenGL/OpenGLShader.h"
 
 class ExampleLayer : public Dua::Layer
 {
@@ -17,6 +20,7 @@ private:
 	glm::vec3 m_CameraPos;
 
 	glm::vec3 m_SquarePos;
+	glm::vec4 m_SquareColor;
 
 public:
 	ExampleLayer() : Layer("Example"),
@@ -80,7 +84,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new Dua::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Dua::Shader::Create(vertexSrc, fragmentSrc));
 
 		//////////////////////////////////////////////////
 
@@ -129,19 +133,24 @@ public:
 			layout(location = 0) out vec4 color;
 			in vec3 v_pos;
 
+			uniform vec3 u_color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = vec4(u_color, 1.0);
 			}
 		)";
 
-		m_SquareShader.reset(new Dua::Shader(sq_vertexSrc, sq_fragmentSrc));
+		m_SquareShader.reset(Dua::Shader::Create(sq_vertexSrc, sq_fragmentSrc));
+
 	}
 
 	void OnUpdate(Dua::Timestep delta) override
 	{
 		//std::cout << "delta: " << ts.GetSecond() << std::endl;
 		//std::cout << "fps: " << 1.0f / ts.GetSecond() << std::endl;
+
+		//std::dynamic_pointer_cast<OpenGLShader>(shader)
 
 		Dua::RenderCommand::SetClearColor({ 57 / 255.0, 197 / 255.0, 187 / 255.0, 1 });
 		Dua::RenderCommand::Clear();
@@ -161,6 +170,9 @@ public:
 		Dua::Renderer::BeginScene(m_Camera);
 
 		glm::mat4 squaretrans = glm::translate(glm::mat4(1.0f), m_SquarePos);
+
+		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_SquareShader)->Bind();
+		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_SquareShader)->UploadUniformVec3("u_color", m_SquareColor);
 
 		Dua::Renderer::Submit(m_SquareShader, m_SquareVA, squaretrans);
 		Dua::Renderer::Submit(m_Shader, m_VertexArray);
@@ -187,10 +199,12 @@ public:
 		return true;
 	}
 
-	void OnImGuiRender() override
+	virtual void OnImGuiRender() override
 	{
-
-	}
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
+	}	
 
 };
 

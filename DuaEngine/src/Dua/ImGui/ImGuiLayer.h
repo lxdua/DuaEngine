@@ -6,6 +6,8 @@
 #include "Dua/Events/KeyEvent.h"
 #include "Dua/Events/MouseEvent.h"
 
+#include "ImGui/imgui.h"
+
 namespace Dua {
 
 	class ImGuiLayer : public Layer
