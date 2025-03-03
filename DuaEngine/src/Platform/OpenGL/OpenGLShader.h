@@ -3,7 +3,7 @@
 #include "Dua/Renderer/Shader.h"
 
 #include "GLAD/glad.h"
-#include "GLM/glm.hpp"
+#include "glm/glm.hpp"
 
 namespace Dua {
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Dua/Window.h"
+#include "Dua/Core/Core.h"
 #include "Dua/Core/Timestep.h"
 #include "Dua/Events/Event.h"
 #include "Dua/LayerStack.h"
@@ -42,7 +43,7 @@ namespace Dua {
 		static Application* s_Instance;
 		bool m_running = true;
 
-		std::unique_ptr<Window> m_Window;
+		Sole<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 		

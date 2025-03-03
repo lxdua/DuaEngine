@@ -10,17 +10,21 @@ class ExampleLayer : public Dua::Layer
 {
 private:
 
-	std::shared_ptr<Dua::Shader> m_Shader;
-	std::shared_ptr<Dua::VertexArray> m_VertexArray;
+	Dua::Ref<Dua::Shader> m_Shader;
+	Dua::Ref<Dua::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Dua::Shader> m_SquareShader;
-	std::shared_ptr<Dua::VertexArray> m_SquareVA;
+	Dua::Ref<Dua::Shader> m_SquareShader;
+	Dua::Ref<Dua::VertexArray> m_SquareVA;
+
+	Dua::Ref<Dua::Shader> m_TexShader;
 
 	Dua::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPos;
 
 	glm::vec3 m_SquarePos;
 	glm::vec4 m_SquareColor;
+
+	Dua::Ref<Dua::Texture2D> m_Texture;
 
 public:
 	ExampleLayer() : Layer("Example"),
@@ -36,7 +40,7 @@ public:
 			 0.0f,  0.5f, 0.0f,  0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Dua::VertexBuffer> m_VertexBuffer;
+		Dua::Ref<Dua::VertexBuffer> m_VertexBuffer;
 		m_VertexBuffer.reset(Dua::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Dua::BufferLayout layout = {
@@ -47,7 +51,7 @@ public:
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Dua::IndexBuffer> m_IndexBuffer;
+		Dua::Ref<Dua::IndexBuffer> m_IndexBuffer;
 		m_IndexBuffer.reset(Dua::IndexBuffer::Create(indices, 3));
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
@@ -90,23 +94,24 @@ public:
 
 		m_SquareVA.reset(Dua::VertexArray::Create());
 
-		float sq_vertices[4 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float sq_vertices[4 * 5] = {
+			-0.5f, -0.5f, 0.0f,  0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f,  1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f,  1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f,  0.0f, 1.0f
 		};
 
-		std::shared_ptr<Dua::VertexBuffer> squareVB;
+		Dua::Ref<Dua::VertexBuffer> squareVB;
 		squareVB.reset(Dua::VertexBuffer::Create(sq_vertices, sizeof(sq_vertices)));
 		Dua::BufferLayout sq_layout = {
-			{ Dua::ShaderDataType::Float3, "a_pos" }
+			{ Dua::ShaderDataType::Float3, "a_pos" },
+			{ Dua::ShaderDataType::Float2, "a_texcoord" }
 		};
 		squareVB->SetLayout(sq_layout);
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		unsigned int sq_indices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Dua::IndexBuffer> squareIB;
+		Dua::Ref<Dua::IndexBuffer> squareIB;
 		squareIB.reset(Dua::IndexBuffer::Create(sq_indices, 6));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -143,6 +148,49 @@ public:
 
 		m_SquareShader.reset(Dua::Shader::Create(sq_vertexSrc, sq_fragmentSrc));
 
+
+		///////////////////////////////////////////////
+
+		std::string tex_vertexSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_pos;
+			layout(location = 1) in vec2 a_texcoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;	
+
+			out vec2 v_texcoord;
+			
+			void main()
+			{
+				v_texcoord = a_texcoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_pos, 1.0);
+			}
+		)";
+
+		std::string tex_fragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_texcoord;
+
+			uniform sampler2D u_texture;
+
+			void main()
+			{
+				color = texture(u_texture, v_texcoord);
+			}
+		)";
+
+		m_TexShader.reset(Dua::Shader::Create(tex_vertexSrc, tex_fragmentSrc));
+
+		m_Texture = Dua::Texture2D::Create("Assets/Textures/tx.png");
+		
+		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_TexShader)->Bind();
+		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_TexShader)->UploadUniformInt("u_texture", 0);
+
 	}
 
 	void OnUpdate(Dua::Timestep delta) override
@@ -174,7 +222,11 @@ public:
 		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_SquareShader)->Bind();
 		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_SquareShader)->UploadUniformVec3("u_color", m_SquareColor);
 
-		Dua::Renderer::Submit(m_SquareShader, m_SquareVA, squaretrans);
+
+		m_Texture->Bind();
+
+		//Dua::Renderer::Submit(m_SquareShader, m_SquareVA, squaretrans);
+		Dua::Renderer::Submit(m_TexShader, m_SquareVA, squaretrans);
 		Dua::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Dua::Renderer::EndScene();

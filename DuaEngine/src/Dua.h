@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Dua/Core/Core.h"
+
 #include "Dua/Application.h"
 #include "Dua/Layer.h"
 
@@ -14,6 +16,7 @@
 #include "Dua/Renderer/Buffer.h"
 #include "Dua/Renderer/Shader.h"
 #include "Dua/Renderer/VertexArray.h"
+#include "Dua/Renderer/Texture.h"
 
 #include "Dua/Renderer/OrthographicCamera.h"
 

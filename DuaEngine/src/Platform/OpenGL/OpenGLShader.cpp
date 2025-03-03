@@ -1,7 +1,7 @@
 #include "duapch.h"
 #include "OpenGLShader.h"
 
-#include "GLM/gtc/type_ptr.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 namespace Dua {
 
