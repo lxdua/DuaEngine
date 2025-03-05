@@ -14,8 +14,8 @@ namespace Dua {
 			None = 0, OpenGL, Direct3D, Vulkan
 		};
 
-		static API GetAPI();
-
+		inline static API GetAPI() { return s_API; }
+		virtual void Init() = 0;
 		virtual void SetClearColor(const glm::vec4& color) = 0;
 		virtual void Clear() = 0;
 

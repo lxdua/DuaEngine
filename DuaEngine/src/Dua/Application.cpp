@@ -1,6 +1,8 @@
 #include "duapch.h"
 #include "Application.h"
 
+#include "Dua/Renderer/Renderer.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Dua {
@@ -13,6 +15,8 @@ namespace Dua {
 
 		m_Window = Sole<Window>(Window::Create());
 		m_Window->SetEventCallback(DUA_BIND_EVENT_FN(Application::OnEvent));
+
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer;
 		PushOverlay(m_ImGuiLayer);

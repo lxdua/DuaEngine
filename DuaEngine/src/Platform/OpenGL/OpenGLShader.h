@@ -10,11 +10,13 @@ namespace Dua {
 	class OpenGLShader : public Shader
 	{
 	public:
+		OpenGLShader(const std::string& filepath);
 		OpenGLShader(const std::string& vertexSource, std::string& fragmentSource);
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+
 
         void UploadUniformInt(const std::string& name, int value);
         void UploadUniformFloat(const std::string& name, float value);
@@ -43,6 +45,10 @@ namespace Dua {
 
         //std::unordered_map<std::string, GLint> m_UniformLocationCache;
         //GLint GetUniformLocation(const std::string& name);
+
+        std::string ReadFile(const std::string& filepath);
+        std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+        void Compile(std::unordered_map<GLenum, std::string>& shaderSource);
 
 	};
 

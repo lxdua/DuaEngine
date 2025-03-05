@@ -154,6 +154,9 @@
   <ItemGroup>
     <ClCompile Include="src\SandBoxApp.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\tex.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

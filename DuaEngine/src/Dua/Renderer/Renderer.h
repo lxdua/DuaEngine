@@ -12,6 +12,8 @@ namespace Dua {
 	public:
 		static RendererAPI::API GetAPI();
 
+		static void Init();
+
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
 		static void Submit(

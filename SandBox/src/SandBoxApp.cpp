@@ -25,6 +25,7 @@ private:
 	glm::vec4 m_SquareColor;
 
 	Dua::Ref<Dua::Texture2D> m_Texture;
+	Dua::Ref<Dua::Texture2D> m_NtxTex;
 
 public:
 	ExampleLayer() : Layer("Example"),
@@ -55,40 +56,8 @@ public:
 		m_IndexBuffer.reset(Dua::IndexBuffer::Create(indices, 3));
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
-		std::string vertexSrc = R"(
-			#version 330 core
 
-			layout(location = 0) in vec3 a_pos;
-			layout(location = 1) in vec4 a_color;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec3 v_pos;
-			out vec4 v_color;
-			
-			void main()
-			{
-				v_pos = a_pos;
-				v_color = a_color;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_pos, 1.0);
-			}
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-
-			layout(location = 0) out vec4 color;
-			in vec3 v_pos;
-			in vec4 v_color;
-
-			void main()
-			{
-				color = v_color;
-			}
-		)";
-
-		m_Shader.reset(Dua::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader.reset(Dua::Shader::Create("Assets/Shaders/tex.glsl"));
 
 		//////////////////////////////////////////////////
 
@@ -186,7 +155,8 @@ public:
 
 		m_TexShader.reset(Dua::Shader::Create(tex_vertexSrc, tex_fragmentSrc));
 
-		m_Texture = Dua::Texture2D::Create("Assets/Textures/tx.png");
+		m_Texture = Dua::Texture2D::Create("Assets/Textures/tm.png");
+		m_NtxTex = Dua::Texture2D::Create("Assets/Textures/ntx.png");
 		
 		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_TexShader)->Bind();
 		std::dynamic_pointer_cast<Dua::OpenGLShader>(m_TexShader)->UploadUniformInt("u_texture", 0);
@@ -213,7 +183,7 @@ public:
 		}
 
 		m_Camera.SetPosition(m_CameraPos);
-		m_Camera.SetRotaetion(45.0f);
+		m_Camera.SetRotation(45.0f);
 
 		Dua::Renderer::BeginScene(m_Camera);
 

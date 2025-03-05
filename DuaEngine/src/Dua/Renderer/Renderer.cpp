@@ -12,6 +12,11 @@ namespace Dua {
 		return RendererAPI::GetAPI();
 	}
 
+	void Renderer::Init()
+	{
+		RenderCommand::Init();
+	}
+
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
 		m_VPMatrix = camera.GetViewProjectionMatrix();
