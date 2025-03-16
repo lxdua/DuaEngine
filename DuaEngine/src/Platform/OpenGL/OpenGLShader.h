@@ -11,12 +11,13 @@ namespace Dua {
 	{
 	public:
 		OpenGLShader(const std::string& filepath);
-		OpenGLShader(const std::string& vertexSource, std::string& fragmentSource);
+		OpenGLShader(const std::string& name, const std::string& vertexSource, std::string& fragmentSource);
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 
+        virtual const std::string& GetName() const override;
 
         void UploadUniformInt(const std::string& name, int value);
         void UploadUniformFloat(const std::string& name, float value);
@@ -42,6 +43,7 @@ namespace Dua {
 
 	private:
 		uint32_t m_RendererID;
+        std::string m_Name;
 
         //std::unordered_map<std::string, GLint> m_UniformLocationCache;
         //GLint GetUniformLocation(const std::string& name);

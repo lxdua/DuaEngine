@@ -9,7 +9,7 @@
 class ExampleLayer : public Dua::Layer
 {
 private:
-
+	Dua::ShaderLibrary m_ShaderLib;
 	Dua::Ref<Dua::Shader> m_Shader;
 	Dua::Ref<Dua::VertexArray> m_VertexArray;
 
@@ -57,7 +57,10 @@ public:
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 
-		m_Shader.reset(Dua::Shader::Create("Assets/Shaders/tex.glsl"));
+		//m_Shader = Dua::Shader::Create("Assets/Shaders/tex.glsl");
+		//m_Shader = m_ShaderLib.Load("Assets/Shaders/tex.glsl");
+		m_ShaderLib.Load("Assets/Shaders/tex.glsl");
+		m_Shader = m_ShaderLib.Get("tex");
 
 		//////////////////////////////////////////////////
 
@@ -115,7 +118,7 @@ public:
 			}
 		)";
 
-		m_SquareShader.reset(Dua::Shader::Create(sq_vertexSrc, sq_fragmentSrc));
+		m_SquareShader = Dua::Shader::Create("sq", sq_vertexSrc, sq_fragmentSrc);
 
 
 		///////////////////////////////////////////////
@@ -153,7 +156,7 @@ public:
 			}
 		)";
 
-		m_TexShader.reset(Dua::Shader::Create(tex_vertexSrc, tex_fragmentSrc));
+		m_TexShader = Dua::Shader::Create("tex", tex_vertexSrc, tex_fragmentSrc);
 
 		m_Texture = Dua::Texture2D::Create("Assets/Textures/tm.png");
 		m_NtxTex = Dua::Texture2D::Create("Assets/Textures/ntx.png");

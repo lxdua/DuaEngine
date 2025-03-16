@@ -12,9 +12,16 @@ namespace Dua {
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
+
+		auto lastSlash = filepath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.rfind('.');
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		m_Name = filepath.substr(lastSlash, count);
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSource, std::string& fragmentSource)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, std::string& fragmentSource)
+		: m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSource;
@@ -35,6 +42,11 @@ namespace Dua {
 	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	const std::string& OpenGLShader::GetName() const
+	{
+		return m_Name;
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
@@ -92,12 +104,11 @@ namespace Dua {
 	void OpenGLShader::Compile(std::unordered_map<GLenum, std::string>& shaderSource)
 	{
 		GLuint program = glCreateProgram();
-		std::vector<GLenum> glShaderIDs(shaderSource.size());
-
+		std::array<GLenum, 2> glShaderIDs; // shaderSource.size() <= 2
+		int glShaderIDIndex = 0;
 		for (auto& [type, src] : shaderSource)
 		{
 			GLuint shader = glCreateShader(type);
-
 
 			const GLchar* source = (const GLchar*)src.c_str();
 			glShaderSource(shader, 1, &source, 0);
@@ -121,7 +132,7 @@ namespace Dua {
 				break;
 			}
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 
 		glLinkProgram(program);
