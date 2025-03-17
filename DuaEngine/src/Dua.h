@@ -20,4 +20,4 @@
 
 #include "Dua/OrthographicCameraController.h"
 
-#include "Dua/EntryPoint.h"
+#include "GLM/glm.hpp"

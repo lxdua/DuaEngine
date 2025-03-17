@@ -20,7 +20,7 @@ namespace Dua {
 		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const = 0;
 		virtual const Ref<IndexBuffer>& GetIndexBuffers() const = 0;
 
-		static VertexArray* Create();
+		static Ref<VertexArray> Create();
 	};
 
 }

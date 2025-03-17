@@ -2,6 +2,8 @@
 
 #include "Event.h"
 
+#include <sstream>
+
 namespace Dua {
 
 	class WindowResizeEvent : public Event
