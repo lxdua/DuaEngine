@@ -18,8 +18,6 @@
 //#include "Dua/Renderer/VertexArray.h"
 //#include "Dua/Renderer/OrthographicCamera.h"
 
-#define DUA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
-
 namespace Dua {
 
 	class Application
@@ -41,7 +39,8 @@ namespace Dua {
 		
 	private:
 		static Application* s_Instance;
-		bool m_running = true;
+		bool m_Running = true;
+		bool m_Minimized = false;
 
 		Sole<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
@@ -50,6 +49,7 @@ namespace Dua {
 		float m_LastFrameTime = 0.0f;
 
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
 	};
 

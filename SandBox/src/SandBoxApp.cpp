@@ -18,8 +18,7 @@ private:
 
 	Dua::Ref<Dua::Shader> m_TexShader;
 
-	Dua::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPos;
+	Dua::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquarePos;
 	glm::vec4 m_SquareColor;
@@ -29,8 +28,7 @@ private:
 
 public:
 	ExampleLayer() : Layer("Example"),
-		m_Camera(-1.28f, 1.28f, -0.72f, 0.72f),
-		m_CameraPos(0.0f),
+		m_CameraController(1280.0f / 720.0f),
 		m_SquarePos(0.0f)
 	{
 	m_VertexArray.reset(Dua::VertexArray::Create());
@@ -168,6 +166,7 @@ public:
 
 	void OnUpdate(Dua::Timestep delta) override
 	{
+		m_CameraController.OnUpdate(delta);
 		//std::cout << "delta: " << ts.GetSecond() << std::endl;
 		//std::cout << "fps: " << 1.0f / ts.GetSecond() << std::endl;
 
@@ -185,10 +184,7 @@ public:
 			m_SquarePos.x += 0.1f * delta;
 		}
 
-		m_Camera.SetPosition(m_CameraPos);
-		m_Camera.SetRotation(45.0f);
-
-		Dua::Renderer::BeginScene(m_Camera);
+		Dua::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 squaretrans = glm::translate(glm::mat4(1.0f), m_SquarePos);
 
@@ -207,21 +203,14 @@ public:
 
 	void OnEvent(Dua::Event& event) override
 	{
-		Dua::EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<Dua::KeyPressedEvent>(DUA_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
+		m_CameraController.OnEvent(event);
+		//Dua::EventDispatcher dispatcher(event);
+		//dispatcher.Dispatch<Dua::KeyPressedEvent>(DUA_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
 	}
 
 	bool OnKeyPressedEvent(Dua::KeyPressedEvent& event)
 	{
-		if (event.GetKeyCode() == DUA_KEY_LEFT)
-		{
-			m_CameraPos.x -= 0.1f;
-		}
-		if (event.GetKeyCode() == DUA_KEY_RIGHT)
-		{
-			m_CameraPos.x += 0.1f;
-		}
-		return true;
+		return false;
 	}
 
 	virtual void OnImGuiRender() override
