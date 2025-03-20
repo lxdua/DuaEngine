@@ -42,6 +42,7 @@
     <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Dua\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Dua\Renderer\Renderer.h" />
+    <ClInclude Include="src\Dua\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Dua\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Dua\Renderer\Shader.h" />
     <ClInclude Include="src\Dua\Renderer\Texture.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Dua\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Dua\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Dua\Renderer\Shader.cpp" />
     <ClCompile Include="src\Dua\Renderer\Texture.cpp" />

@@ -11,6 +11,7 @@
 #include "Dua/InputCodes.h"
 
 #include "Dua/Renderer/Renderer.h"
+#include "Dua/Renderer/Renderer2D.h"
 #include "Dua/Renderer/RenderCommand.h"
 #include "Dua/Renderer/Buffer.h"
 #include "Dua/Renderer/Shader.h"
