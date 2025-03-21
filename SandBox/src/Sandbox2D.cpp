@@ -24,12 +24,6 @@ void Sandbox2D::OnUpdate(Dua::Timestep ts)
 
 	Dua::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	//std::dynamic_pointer_cast<Dua::OpenGLShader>(m_SquareShader)->Bind();
-	//std::dynamic_pointer_cast<Dua::OpenGLShader>(m_SquareShader)->UploadUniformVec3("u_color", m_SquareColor);
-	//m_SquareShader->Bind();
-
-	//Dua::Renderer::Submit(m_SquareShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
 	Dua::Renderer2D::DrawQuad({ 1.0f,2.0f }, { 0.5f,1.0f }, { 0.5f,0.2f,0.3f,1.0f });
 	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, m_Texture);
 

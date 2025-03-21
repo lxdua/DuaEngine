@@ -34,7 +34,7 @@ namespace Dua {
 		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ ShaderDataType::Vec3, "a_Position" },
-			{ ShaderDataType::Vec2, "a_Texcoord" }
+			{ ShaderDataType::Vec2, "a_UV" }
 			});
 		s_Data->QuadVertexArray->AddVertexBuffer(squareVB);
 
