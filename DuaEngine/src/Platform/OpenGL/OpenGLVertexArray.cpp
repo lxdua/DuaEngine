@@ -10,15 +10,15 @@ namespace Dua {
 		switch (type)
 		{
 		case ShaderDataType::Int: return GL_INT;
-		case ShaderDataType::Int2: return GL_INT;
-		case ShaderDataType::Int3: return GL_INT;
-		case ShaderDataType::Int4: return GL_INT;
+		case ShaderDataType::IVec2: return GL_INT;
+		case ShaderDataType::IVec3: return GL_INT;
+		case ShaderDataType::IVec4: return GL_INT;
 		case ShaderDataType::Float: return GL_FLOAT;
-		case ShaderDataType::Float2: return GL_FLOAT;
-		case ShaderDataType::Float3: return GL_FLOAT;
-		case ShaderDataType::Float4: return GL_FLOAT;
-			//case ShaderDataType::Mat3: return GL_FLOAT;
-			//case ShaderDataType::Mat4: return GL_FLOAT;
+		case ShaderDataType::Vec2: return GL_FLOAT;
+		case ShaderDataType::Vec3: return GL_FLOAT;
+		case ShaderDataType::Vec4: return GL_FLOAT;
+		//case ShaderDataType::Mat3: return GL_FLOAT;
+		//case ShaderDataType::Mat4: return GL_FLOAT;
 		case ShaderDataType::Bool: return GL_BOOL;
 		}
 	}

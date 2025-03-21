@@ -49,6 +49,28 @@ namespace Dua {
 		return m_Name;
 	}
 
+
+	void OpenGLShader::SetInt(const std::string& name, const int value)
+	{
+		UploadUniformInt(name, value);
+	}
+
+	void OpenGLShader::SetVec3(const std::string& name, const glm::vec3 value)
+	{
+		UploadUniformVec3(name, value);
+	}
+
+	void OpenGLShader::SetVec4(const std::string& name, const glm::vec4 value)
+	{
+		UploadUniformVec4(name, value);
+	}
+
+	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4 value)
+	{
+		UploadUniformMat4(name, value);
+	}
+
+
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
 		std::string result;

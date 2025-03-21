@@ -5,7 +5,7 @@
 #include "VertexArray.h"
 #include "Shader.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Dua {
 
@@ -13,6 +13,7 @@ namespace Dua {
 	{
 		Ref<VertexArray> QuadVertexArray;
 		Ref<Shader> FlatColorShader;
+		Ref<Shader> TextureShader;
 	};
 
 	static Renderer2DStorage* s_Data;
@@ -22,7 +23,7 @@ namespace Dua {
 		s_Data = new Renderer2DStorage;
 		s_Data->QuadVertexArray = VertexArray::Create();
 
-		float sq_vertices[4 * 5] = {
+		float squareVertices[4 * 5] = {
 			-0.5f, -0.5f, 0.0f,  0.0f, 0.0f,
 			 0.5f, -0.5f, 0.0f,  1.0f, 0.0f,
 			 0.5f,  0.5f, 0.0f,  1.0f, 1.0f,
@@ -30,12 +31,11 @@ namespace Dua {
 		};
 
 		Ref<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(sq_vertices, sizeof(sq_vertices)));
-		BufferLayout sq_layout = {
-			{ ShaderDataType::Float3, "a_pos" },
-			{ ShaderDataType::Float2, "a_texcoord" }
-		};
-		squareVB->SetLayout(sq_layout);
+		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB->SetLayout({
+			{ ShaderDataType::Vec3, "a_Position" },
+			{ ShaderDataType::Vec2, "a_Texcoord" }
+			});
 		s_Data->QuadVertexArray->AddVertexBuffer(squareVB);
 
 		unsigned int sq_indices[6] = { 0, 1, 2, 2, 3, 0 };
@@ -43,7 +43,11 @@ namespace Dua {
 		squareIB.reset(IndexBuffer::Create(sq_indices, 6));
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 
-		s_Data->FlatColorShader = Shader::Create("Assets/Shaders/sq.glsl");
+		s_Data->FlatColorShader = Shader::Create("Assets/Shaders/FlatColor.glsl");
+
+		s_Data->TextureShader = Shader::Create("Assets/Shaders/Texture.glsl");
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetInt("TEXTURE", 0);
 	}
 
 	void Renderer2D::Shutdown()
@@ -54,8 +58,10 @@ namespace Dua {
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
 		s_Data->FlatColorShader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->UploadUniformMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->UploadUniformMat4("u_Transform", glm::mat4(1.0f));
+		s_Data->FlatColorShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
+
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
@@ -70,7 +76,32 @@ namespace Dua {
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		s_Data->FlatColorShader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->UploadUniformVec4("u_Color", color);
+		s_Data->FlatColorShader->SetVec4("u_Color", color);
+
+		glm::mat4 transform =
+			glm::translate(glm::mat4(1.0f), position) *
+			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		s_Data->FlatColorShader->SetMat4("u_Transform", transform);
+
+		s_Data->QuadVertexArray->Bind();
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture)
+	{
+		DrawQuad({ position.x, position.y, 0.0f }, size, texture);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture)
+	{
+		glm::mat4 transform =
+			glm::translate(glm::mat4(1.0f), position) *
+			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetMat4("u_Transform", transform);
+
+		texture->Bind();
 
 		s_Data->QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);

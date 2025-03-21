@@ -19,6 +19,12 @@ namespace Dua {
 
         virtual const std::string& GetName() const override;
 
+        virtual void SetInt(const std::string& name, const int value) override;
+        virtual void SetVec3(const std::string& name, const glm::vec3 value) override;
+        virtual void SetVec4(const std::string& name, const glm::vec4 value) override;
+        virtual void SetMat4(const std::string& name, const glm::mat4 value) override;
+
+
         void UploadUniformInt(const std::string& name, int value);
         void UploadUniformFloat(const std::string& name, float value);
 

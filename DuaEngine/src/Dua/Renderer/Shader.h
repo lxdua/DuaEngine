@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Dua/Core/Core.h"
+#include "GLM/glm.hpp"
 
 #include <string>
 
@@ -19,6 +20,11 @@ namespace Dua {
 		static Ref<Shader> Create(const std::string& filepath);
 
 		static Ref<Shader> Create(const std::string& name, const std::string& vertexSource, std::string& fragmentSource);
+
+		virtual void SetInt(const std::string& name, const int value) = 0;
+		virtual void SetVec3(const std::string& name, const glm::vec3 value) = 0;
+		virtual void SetVec4(const std::string& name, const glm::vec4 value) = 0;
+		virtual void SetMat4(const std::string& name, const glm::mat4 value) = 0;
 
 	};
 

@@ -20,6 +20,8 @@ private:
 	Dua::Ref<Dua::Shader> m_SquareShader;
 	Dua::Ref<Dua::VertexArray> m_SquareVA;
 
+	Dua::Ref<Dua::Texture2D> m_Texture;
+
 	glm::vec4 m_SquareColor;
 };
 

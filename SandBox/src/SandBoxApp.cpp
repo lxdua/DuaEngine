@@ -8,6 +8,7 @@
 #include "Platform/OpenGL/OpenGLShader.h"
 #include "Sandbox2D.h"
 
+/*
 class ExampleLayer : public Dua::Layer
 {
 private:
@@ -45,8 +46,8 @@ public:
 		m_VertexBuffer.reset(Dua::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Dua::BufferLayout layout = {
-			{ Dua::ShaderDataType::Float3, "a_pos" },
-			{ Dua::ShaderDataType::Float4, "a_color" }
+			{ Dua::ShaderDataType::Vec3, "a_Position" },
+			{ Dua::ShaderDataType::Vec4, "a_color" }
 		};
 		m_VertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
@@ -76,8 +77,8 @@ public:
 		Dua::Ref<Dua::VertexBuffer> squareVB;
 		squareVB.reset(Dua::VertexBuffer::Create(sq_vertices, sizeof(sq_vertices)));
 		Dua::BufferLayout sq_layout = {
-			{ Dua::ShaderDataType::Float3, "a_pos" },
-			{ Dua::ShaderDataType::Float2, "a_texcoord" }
+			{ Dua::ShaderDataType::Vec3, "a_pos" },
+			{ Dua::ShaderDataType::Vec2, "a_texcoord" }
 		};
 		squareVB->SetLayout(sq_layout);
 		m_SquareVA->AddVertexBuffer(squareVB);
@@ -223,6 +224,7 @@ public:
 	}	
 
 };
+*/
 
 class Sandbox : public Dua::Application
 {
