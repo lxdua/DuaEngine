@@ -24,8 +24,8 @@ void Sandbox2D::OnUpdate(Dua::Timestep ts)
 
 	Dua::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Dua::Renderer2D::DrawQuad({ 1.0f,2.0f }, { 0.5f,1.0f }, { 0.5f,0.2f,0.3f,1.0f });
-	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, m_Texture);
+	//Dua::Renderer2D::DrawQuad({ 1.0f,2.0f }, { 0.5f,1.0f }, { 0.5f,0.2f,0.3f,1.0f });
+	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 45.0f, m_Texture, glm::vec4(1.0f, 0.5f, 1.0f, 0.5f));
 
 	Dua::Renderer2D::EndScene();
 }
@@ -39,4 +39,5 @@ void Sandbox2D::OnImGuiRender()
 
 void Sandbox2D::OnEvent(Dua::Event& event)
 {
+	m_CameraController.OnEvent(event);
 }

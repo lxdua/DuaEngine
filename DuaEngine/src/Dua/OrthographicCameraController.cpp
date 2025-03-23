@@ -39,7 +39,7 @@ namespace Dua {
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
-		m_ZoomLevel = std::max(0.2f, m_ZoomLevel - e.GetYOffset() * 0.2f);
+		m_ZoomLevel = std::max(0.1f, m_ZoomLevel - e.GetYOffset() * 0.1f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;
 	}
