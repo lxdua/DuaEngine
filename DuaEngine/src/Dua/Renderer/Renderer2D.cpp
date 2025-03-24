@@ -13,6 +13,7 @@ namespace Dua {
 	{
 		glm::vec3 Position;
 		glm::vec2 UV;
+		float TexIndex;
 		glm::vec4 Modulate;
 	};
 
@@ -21,14 +22,20 @@ namespace Dua {
 		const uint32_t MaxQuads = 10000;
 		const uint32_t MaxVertices = MaxQuads * 4;
 		const uint32_t MaxIndices = MaxQuads * 6;
+		static const uint32_t MaxTextureSlots = 32;
 
 		Ref<VertexArray> QuadVertexArray;
 		Ref<VertexBuffer> QuadVertexBuffer;
 		Ref<Shader> TextureShader;
 
+		Ref<Texture2D> WhiteTexture;
+
 		uint32_t QuadIndexCount = 0;
 		QuadVertex* QuadVertexBufferBase = nullptr;
 		QuadVertex* QuadVertexBufferPtr = nullptr;
+
+		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
+		uint32_t TextureSlotIndex = 1;
 	};
 
 	static Renderer2DStorage* s_Data;
@@ -42,6 +49,7 @@ namespace Dua {
 		s_Data->QuadVertexBuffer->SetLayout({
 			{ ShaderDataType::Vec3, "a_Position" },
 			{ ShaderDataType::Vec2, "a_UV" },
+			{ ShaderDataType::Float, "a_TexIndex" },
 			{ ShaderDataType::Vec4, "a_Modulate" }
 			});
 		s_Data->QuadVertexArray->AddVertexBuffer(s_Data->QuadVertexBuffer);
@@ -66,9 +74,19 @@ namespace Dua {
 		s_Data->QuadVertexArray->SetIndexBuffer(quadIB);
 		delete[] quadIndices;
 
+		s_Data->WhiteTexture = Texture2D::Create("Assets/Textures/White.png");
+
+		int samplers[32];
+		for (int i = 0; i < s_Data->MaxTextureSlots; i++)
+		{
+			samplers[i] = i;
+		}
+
 		s_Data->TextureShader = Shader::Create("Assets/Shaders/Texture.glsl");
 		s_Data->TextureShader->Bind();
-		s_Data->TextureShader->SetInt("TEXTURE", 0);
+		s_Data->TextureShader->SetIntArray("u_Texture", samplers, s_Data->MaxTextureSlots);
+
+		s_Data->TextureSlots[0] = s_Data->WhiteTexture;
 	}
 
 	void Renderer2D::Shutdown()
@@ -83,6 +101,8 @@ namespace Dua {
 
 		s_Data->QuadIndexCount = 0;
 		s_Data->QuadVertexBufferPtr = s_Data->QuadVertexBufferBase;
+
+		s_Data->TextureSlotIndex = 1;
 	}
 
 	void Renderer2D::EndScene()
@@ -94,7 +114,12 @@ namespace Dua {
 
 	void Renderer2D::Flush()
 	{
-		//RenderCommand::DrawIndexed(s_Data->QuadVertexArray, s_Data->QuadIndexCount);
+		for (uint32_t i = 0; i < s_Data->TextureSlotIndex; i++)
+		{
+			s_Data->TextureSlots[i]->Bind(i);
+		}
+		s_Data->QuadVertexArray->Bind();
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray, s_Data->QuadIndexCount);
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, glm::vec4 modulate)
@@ -104,28 +129,50 @@ namespace Dua {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, glm::vec4 modulate)
 	{
+		float textureIndex = 0.0f;
+
+		for (uint32_t i = 1; i < s_Data->TextureSlots.size(); i++)
+		{
+			if (s_Data->TextureSlots[i].get() == texture.get())
+			{
+				textureIndex = (float)i;
+				break;
+			}
+		}
+
+		if (textureIndex == 0.0f)
+		{
+			textureIndex = (float)s_Data->TextureSlotIndex;
+			s_Data->TextureSlots[s_Data->TextureSlotIndex] = texture;
+		}
+
 		s_Data->QuadVertexBufferPtr->Position = position;
 		s_Data->QuadVertexBufferPtr->UV = { 0.0f,0.0f };
+		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
 
 		s_Data->QuadVertexBufferPtr->Position = { position.x + size.x, position.y, 0.0f };
 		s_Data->QuadVertexBufferPtr->UV = { 1.0f,0.0f };
+		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
 
 		s_Data->QuadVertexBufferPtr->Position = { position.x + size.x, position.y + size.y, 0.0f };
 		s_Data->QuadVertexBufferPtr->UV = { 1.0f,1.0f };
+		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
 
 		s_Data->QuadVertexBufferPtr->Position = { position.x, position.y + size.y, 0.0f };
 		s_Data->QuadVertexBufferPtr->UV = { 0.0f,1.0f };
+		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
 
 		s_Data->QuadIndexCount += 6;
 
+		
 		glm::mat4 transform =
 			glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f,0.0f,1.0f }) *
@@ -133,12 +180,7 @@ namespace Dua {
 
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("TRANSFORM", transform);
-		//s_Data->TextureShader->SetVec4("MODULATE", modulate);
-
-		texture->Bind();
-
-		s_Data->QuadVertexArray->Bind();
-		RenderCommand::DrawIndexed(s_Data->QuadVertexArray, s_Data->QuadIndexCount);
+		
 	}
 
 }
