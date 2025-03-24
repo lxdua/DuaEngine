@@ -19,9 +19,9 @@ namespace Dua {
 
 	struct Renderer2DStorage
 	{
-		const uint32_t MaxQuads = 10000;
-		const uint32_t MaxVertices = MaxQuads * 4;
-		const uint32_t MaxIndices = MaxQuads * 6;
+		static const uint32_t MaxQuads = 10000;
+		static const uint32_t MaxVertices = MaxQuads * 4;
+		static const uint32_t MaxIndices = MaxQuads * 6;
 		static const uint32_t MaxTextureSlots = 32;
 
 		Ref<VertexArray> QuadVertexArray;
@@ -129,8 +129,12 @@ namespace Dua {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, glm::vec4 modulate)
 	{
-		float textureIndex = 0.0f;
+		if (s_Data->QuadIndexCount >= Renderer2DStorage::MaxIndices)
+		{
+			FlushAndReset();
+		}
 
+		float textureIndex = 0.0f;
 		for (uint32_t i = 1; i < s_Data->TextureSlots.size(); i++)
 		{
 			if (s_Data->TextureSlots[i].get() == texture.get())
@@ -139,7 +143,6 @@ namespace Dua {
 				break;
 			}
 		}
-
 		if (textureIndex == 0.0f)
 		{
 			textureIndex = (float)s_Data->TextureSlotIndex;
@@ -181,6 +184,16 @@ namespace Dua {
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("TRANSFORM", transform);
 		
+	}
+
+	void Renderer2D::FlushAndReset()
+	{
+		EndScene();
+
+		s_Data->QuadIndexCount = 0;
+		s_Data->QuadVertexBufferPtr = s_Data->QuadVertexBufferBase;
+
+		s_Data->TextureSlotIndex = 1;
 	}
 
 }

@@ -24,7 +24,9 @@ void Sandbox2D::OnUpdate(Dua::Timestep ts)
 
 	Dua::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 45.0f, m_Texture, glm::vec4(1.0f, 0.5f, 1.0f, 0.5f));
+	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 45.0f, m_Texture, { 1.0f,0.5f,1.0f,0.5f });
+
+	for (float x = -5.0f; x <= 5.0f; x += 0.01)Dua::Renderer2D::DrawQuad({ x,0.05f }, { 1.0f,1.0f }, 0, m_Texture, { (x + 5)/10.0f,0.5f,1.0f,0.5f });
 
 	Dua::Renderer2D::EndScene();
 }
@@ -32,7 +34,7 @@ void Sandbox2D::OnUpdate(Dua::Timestep ts)
 void Sandbox2D::OnImGuiRender()
 {
 	ImGui::Begin("Settings");
-	ImGui::ColorEdit3("Color", glm::value_ptr(m_SquareColor));
+	ImGui::ColorEdit4("Color", glm::value_ptr(m_SquareColor));
 	ImGui::End();
 }
 
