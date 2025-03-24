@@ -13,6 +13,7 @@ namespace Dua {
 	{
 		glm::vec3 Position;
 		glm::vec2 UV;
+		glm::vec4 Modulate;
 	};
 
 	struct Renderer2DStorage
@@ -40,7 +41,8 @@ namespace Dua {
 		s_Data->QuadVertexBuffer = VertexBuffer::Create(s_Data->MaxVertices * sizeof(QuadVertex));
 		s_Data->QuadVertexBuffer->SetLayout({
 			{ ShaderDataType::Vec3, "a_Position" },
-			{ ShaderDataType::Vec2, "a_UV" }
+			{ ShaderDataType::Vec2, "a_UV" },
+			{ ShaderDataType::Vec4, "a_Modulate" }
 			});
 		s_Data->QuadVertexArray->AddVertexBuffer(s_Data->QuadVertexBuffer);
 
@@ -104,15 +106,22 @@ namespace Dua {
 	{
 		s_Data->QuadVertexBufferPtr->Position = position;
 		s_Data->QuadVertexBufferPtr->UV = { 0.0f,0.0f };
+		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
+
 		s_Data->QuadVertexBufferPtr->Position = { position.x + size.x, position.y, 0.0f };
 		s_Data->QuadVertexBufferPtr->UV = { 1.0f,0.0f };
+		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
+
 		s_Data->QuadVertexBufferPtr->Position = { position.x + size.x, position.y + size.y, 0.0f };
 		s_Data->QuadVertexBufferPtr->UV = { 1.0f,1.0f };
+		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
+
 		s_Data->QuadVertexBufferPtr->Position = { position.x, position.y + size.y, 0.0f };
 		s_Data->QuadVertexBufferPtr->UV = { 0.0f,1.0f };
+		s_Data->QuadVertexBufferPtr->Modulate = modulate;
 		s_Data->QuadVertexBufferPtr++;
 
 		s_Data->QuadIndexCount += 6;
@@ -124,7 +133,7 @@ namespace Dua {
 
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("TRANSFORM", transform);
-		s_Data->TextureShader->SetVec4("MODULATE", modulate);
+		//s_Data->TextureShader->SetVec4("MODULATE", modulate);
 
 		texture->Bind();
 
