@@ -16,10 +16,10 @@ namespace Dua {
 		static void SetClearColor(const glm::vec4& color);
 		static void Clear();
 
-		static void DrawIndexed(const Ref<VertexArray>& vertexArray);
+		static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t count = 0);
 
 	private:
-		static RendererAPI* s_RendererAPI;
+		static Scope<RendererAPI> s_RendererAPI;
 	};
 
 }

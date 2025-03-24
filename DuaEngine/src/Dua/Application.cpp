@@ -13,7 +13,7 @@ namespace Dua {
 	{
 		s_Instance = this;
 
-		m_Window = Sole<Window>(Window::Create());
+		m_Window = Scope<Window>(Window::Create());
 		m_Window->SetEventCallback(DUA_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();

@@ -35,6 +35,7 @@
     <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
     <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="3rdparty\stb\stb_image.h" />
+    <ClInclude Include="src\Dua\Core\Random.h" />
     <ClInclude Include="src\Dua\OrthographicCameraController.h" />
     <ClInclude Include="src\Dua\Core\Core.h" />
     <ClInclude Include="src\Dua\Core\Timestep.h" />

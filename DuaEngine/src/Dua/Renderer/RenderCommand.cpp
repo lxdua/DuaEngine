@@ -5,7 +5,7 @@
 
 namespace Dua {
 
-	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
+	Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
 
 	void RenderCommand::Init()
 	{
@@ -27,9 +27,9 @@ namespace Dua {
 		s_RendererAPI->Clear();
 	}
 
-	void RenderCommand::DrawIndexed(const Ref<VertexArray>& vertexArray)
+	void RenderCommand::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t count)
 	{
-		s_RendererAPI->DrawIndexed(vertexArray);
+		s_RendererAPI->DrawIndexed(vertexArray, count);
 	}
 
 }

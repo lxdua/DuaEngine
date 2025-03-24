@@ -41,7 +41,7 @@ namespace Dua {
 		shader->SetMat4("u_Transform", transform);
 		
 		vertexArray->Bind();
-		RenderCommand::DrawIndexed(vertexArray);
+		//RenderCommand::DrawIndexed(vertexArray);
 	}
 
 }

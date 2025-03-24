@@ -42,7 +42,7 @@ namespace Dua {
 		bool m_Running = true;
 		bool m_Minimized = false;
 
-		Sole<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 		

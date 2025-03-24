@@ -171,6 +171,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dua\Core\Random.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dua\Application.cpp">

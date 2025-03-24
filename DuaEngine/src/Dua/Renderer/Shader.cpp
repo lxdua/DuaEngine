@@ -14,7 +14,7 @@ namespace Dua {
 		case RendererAPI::API::None:
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(filepath);
+			return CreateRef<OpenGLShader>(filepath);
 		case RendererAPI::API::Direct3D:
 			return nullptr;
 		}
@@ -28,7 +28,7 @@ namespace Dua {
 		case RendererAPI::API::None:
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(name, vertexSource, fragmentSource);
+			return CreateRef<OpenGLShader>(name, vertexSource, fragmentSource);
 		case RendererAPI::API::Direct3D:
 			return nullptr;
 		}

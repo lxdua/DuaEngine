@@ -19,13 +19,13 @@ void Sandbox2D::OnUpdate(Dua::Timestep ts)
 {
 	m_CameraController.OnUpdate(ts);
 
-	Dua::RenderCommand::SetClearColor({ 57 / 255.0, 197 / 255.0, 187 / 255.0, 1 });
+	Dua::RenderCommand::SetClearColor({ 0.15,0.15,0.15,1.0 });
 	Dua::RenderCommand::Clear();
 
 	Dua::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
 	//Dua::Renderer2D::DrawQuad({ 1.0f,2.0f }, { 0.5f,1.0f }, { 0.5f,0.2f,0.3f,1.0f });
-	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 45.0f, m_Texture, glm::vec4(1.0f, 0.5f, 1.0f, 0.5f));
+	Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 0.0f, m_Texture, glm::vec4(1.0f, 0.5f, 1.0f, 0.5f));
 
 	Dua::Renderer2D::EndScene();
 }

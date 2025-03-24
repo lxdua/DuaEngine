@@ -13,7 +13,7 @@ namespace Dua {
 		case RendererAPI::API::None:
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLTexture2D>(path);
+			return CreateRef<OpenGLTexture2D>(path);
 		case RendererAPI::API::Direct3D:
 			return nullptr;
 		}

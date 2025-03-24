@@ -21,4 +21,4 @@
 
 #include "Dua/OrthographicCameraController.h"
 
-#include "GLM/glm.hpp"
+#include "glm/glm.hpp"
