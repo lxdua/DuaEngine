@@ -1,15 +1,15 @@
 #pragma once
 
 #include "Dua/Window.h"
-#include "Dua/Core/Core.h"
+#include "Dua/Core/Memory.h"
 #include "Dua/Core/Timestep.h"
 #include "Dua/Events/Event.h"
-#include "Dua/LayerStack.h"
+#include "Dua/Layer/LayerStack.h"
 #include "Dua/ImGui/ImGuiLayer.h"
 
 
-//#include "Dua/Input.h"
-//#include "Dua/InputCodes.h"
+//#include "Dua/Core/Input/Input.h"
+//#include "Dua/Core/Input/InputCodes.h"
 //#include "Dua/Events/ApplicationEvent.h"
 //#include "Dua/Events/KeyEvent.h"
 //#include "Dua/Events/MouseEvent.h"

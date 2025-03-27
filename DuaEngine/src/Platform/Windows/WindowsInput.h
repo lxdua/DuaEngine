@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Dua/Input.h"
+#include "Dua/Core/Input/Input.h"
 
 namespace Dua {
 

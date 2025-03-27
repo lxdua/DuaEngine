@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Dua/Core/Core.h"
+#include "Dua/Core/Memory.h"
 
 #include "Dua/Application.h"
-#include "Dua/Layer.h"
+#include "Dua/Layer/Layer.h"
 
 #include "Dua/ImGui/ImGuiLayer.h"
 
-#include "Dua/Input.h"
-#include "Dua/InputCodes.h"
+#include "Dua/Core/Input/Input.h"
+#include "Dua/Core/Input/InputCodes.h"
 
 #include "Dua/Renderer/Renderer.h"
 #include "Dua/Renderer/Renderer2D.h"

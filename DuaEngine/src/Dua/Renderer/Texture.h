@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Dua/Core/Core.h"
+#include "Dua/Core/Memory.h"
 
 #include <string>
 

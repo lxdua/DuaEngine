@@ -2,7 +2,7 @@
 
 #include "RendererAPI.h"
 
-#include "Dua/Core/Core.h"
+#include "Dua/Core/Memory.h"
 
 namespace Dua {
 

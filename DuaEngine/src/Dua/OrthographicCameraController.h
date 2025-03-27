@@ -3,8 +3,8 @@
 #include "Dua/Renderer/OrthographicCamera.h"
 #include "Dua/Core/Timestep.h"
 
-#include "Dua/Input.h"
-#include "Dua/InputCodes.h"
+#include "Dua/Core/Input/Input.h"
+#include "Dua/Core/Input/InputCodes.h"
 
 #include "Dua/Events/ApplicationEvent.h"
 #include "Dua/Events/KeyEvent.h"

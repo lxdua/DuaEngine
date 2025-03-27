@@ -35,9 +35,11 @@
     <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
     <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="3rdparty\stb\stb_image.h" />
+    <ClInclude Include="src\Dua\Core\Object\Object.h" />
     <ClInclude Include="src\Dua\Core\Random.h" />
+    <ClInclude Include="src\Dua\Core\Variant\Varient.h" />
     <ClInclude Include="src\Dua\OrthographicCameraController.h" />
-    <ClInclude Include="src\Dua\Core\Core.h" />
+    <ClInclude Include="src\Dua\Core\Memory.h" />
     <ClInclude Include="src\Dua\Core\Timestep.h" />
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
     <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h" />
@@ -48,13 +50,17 @@
     <ClInclude Include="src\Dua\Renderer\Shader.h" />
     <ClInclude Include="src\Dua\Renderer\Texture.h" />
     <ClInclude Include="src\Dua\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Dua\Scene\2D\Node2D.h" />
+    <ClInclude Include="src\Dua\Scene\2D\Sprite2D.h" />
+    <ClInclude Include="src\Dua\Scene\Main\CanvasItem.h" />
+    <ClInclude Include="src\Dua\Scene\Main\Node.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Dua\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Dua\Input.h" />
-    <ClInclude Include="src\Dua\InputCodes.h" />
-    <ClInclude Include="src\Dua\LayerStack.h" />
-    <ClInclude Include="src\Dua\Layer.h" />
+    <ClInclude Include="src\Dua\Core\Input\Input.h" />
+    <ClInclude Include="src\Dua\Core\Input\InputCodes.h" />
+    <ClInclude Include="src\Dua\Layer\LayerStack.h" />
+    <ClInclude Include="src\Dua\Layer\Layer.h" />
     <ClInclude Include="src\duapch.h" />
     <ClInclude Include="src\Dua\Events\Event.h" />
     <ClInclude Include="src\Dua\Events\KeyEvent.h" />
@@ -165,6 +171,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Dua\Core\Object\Object.cpp" />
+    <ClCompile Include="src\Dua\Core\Variant\Varient.cpp" />
     <ClCompile Include="src\Dua\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp" />
@@ -175,11 +183,15 @@
     <ClCompile Include="src\Dua\Renderer\Shader.cpp" />
     <ClCompile Include="src\Dua\Renderer\Texture.cpp" />
     <ClCompile Include="src\Dua\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Dua\Scene\2D\Node2D.cpp" />
+    <ClCompile Include="src\Dua\Scene\2D\Sprite2D.cpp" />
+    <ClCompile Include="src\Dua\Scene\Main\CanvasItem.cpp" />
+    <ClCompile Include="src\Dua\Scene\Main\Node.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Dua\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Dua\LayerStack.cpp" />
-    <ClCompile Include="src\Dua\Layer.cpp" />
+    <ClCompile Include="src\Dua\Layer\LayerStack.cpp" />
+    <ClCompile Include="src\Dua\Layer\Layer.cpp" />
     <ClCompile Include="src\duapch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

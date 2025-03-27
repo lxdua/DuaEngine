@@ -3,7 +3,7 @@
 
 #include "Dua/Renderer/Renderer.h"
 
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
 namespace Dua {
 
