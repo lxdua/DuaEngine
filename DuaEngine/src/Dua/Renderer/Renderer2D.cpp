@@ -86,7 +86,7 @@ namespace Dua {
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetIntArray("u_Textures", samplers, s_Data->MaxTextureSlots);
 
-		//s_Data->TextureSlots[0] = s_Data->WhiteTexture;
+		s_Data->TextureSlots[0] = s_Data->WhiteTexture;
 	}
 
 	void Renderer2D::Shutdown()
@@ -147,6 +147,7 @@ namespace Dua {
 		{
 			textureIndex = (float)s_Data->TextureSlotIndex;
 			s_Data->TextureSlots[s_Data->TextureSlotIndex] = texture;
+			s_Data->TextureSlotIndex++;
 		}
 
 		s_Data->QuadVertexBufferPtr->Position = position;
