@@ -3,4 +3,9 @@
 
 namespace Dua {
 
+	void Sprite2D::draw()
+	{
+
+	}
+
 }

@@ -6,6 +6,10 @@ namespace Dua {
 
 	class CanvasItem : public Node
 	{
+	private:
+
+	public:
+		virtual void draw() {}
 
 	};
 
