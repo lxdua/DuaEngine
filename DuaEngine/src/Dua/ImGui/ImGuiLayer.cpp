@@ -66,7 +66,7 @@ namespace Dua {
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-		ImGui::ShowDemoWindow(); // Show demo window! :)
+		
 	}
 
 	void ImGuiLayer::Begin()

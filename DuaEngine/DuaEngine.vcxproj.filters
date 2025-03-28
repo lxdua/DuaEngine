@@ -192,6 +192,12 @@
     <ClInclude Include="src\Dua\Core\Variant\Varient.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Framebuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dua\Application.cpp">
@@ -315,6 +321,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Dua\Core\Variant\Varient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Framebuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

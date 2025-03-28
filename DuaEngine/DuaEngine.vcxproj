@@ -42,6 +42,7 @@
     <ClInclude Include="src\Dua\Core\Memory.h" />
     <ClInclude Include="src\Dua\Core\Timestep.h" />
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dua\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Dua\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Dua\Renderer\Renderer.h" />
@@ -70,6 +71,7 @@
     <ClInclude Include="src\Dua.h" />
     <ClInclude Include="src\Dua\EntryPoint.h" />
     <ClInclude Include="src\Dua\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
@@ -175,6 +177,7 @@
     <ClCompile Include="src\Dua\Core\Variant\Varient.cpp" />
     <ClCompile Include="src\Dua\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Dua\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
@@ -205,6 +208,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />

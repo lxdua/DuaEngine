@@ -7,9 +7,10 @@ namespace Dua {
 
 	class Sprite2D : public Node2D
 	{
-	private:
+	protected:
 
 		Ref<Texture2D> texture;
+		glm::vec4 modulate = glm::vec4(1.0);
 
 	public:
 		virtual void draw() override;

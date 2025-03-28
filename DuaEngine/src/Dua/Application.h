@@ -34,6 +34,8 @@ namespace Dua {
 
 		Window& GetWindow();
 
+		void Close();
+
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 		

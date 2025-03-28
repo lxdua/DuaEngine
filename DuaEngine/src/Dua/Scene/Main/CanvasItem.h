@@ -1,15 +1,16 @@
 #pragma once
 
 #include "Dua/Scene/Main/Node.h"
+#include "Dua/Renderer/Renderer2D.h"
 
 namespace Dua {
 
 	class CanvasItem : public Node
 	{
-	private:
+	protected:
 
 	public:
-		virtual void draw() {}
+		virtual void draw();
 
 	};
 

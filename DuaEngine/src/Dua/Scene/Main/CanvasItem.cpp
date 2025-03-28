@@ -3,4 +3,8 @@
 
 namespace Dua {
 
+    void CanvasItem::draw()
+    {
+    }
+
 }

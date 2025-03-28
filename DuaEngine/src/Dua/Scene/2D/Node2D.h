@@ -6,7 +6,7 @@ namespace Dua {
 
 	class Node2D : public CanvasItem
 	{
-	private:
+	protected:
 		glm::vec2 position;
 		float rotation = 0.0;
 		glm::vec2 scale;
