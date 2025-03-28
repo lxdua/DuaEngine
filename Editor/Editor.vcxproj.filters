@@ -18,12 +18,18 @@
     <ClInclude Include="src\EditorLayer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\OrthographicCameraController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DuaEditor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\EditorLayer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrthographicCameraController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

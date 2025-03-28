@@ -38,7 +38,6 @@
     <ClInclude Include="src\Dua\Core\Object\Object.h" />
     <ClInclude Include="src\Dua\Core\Random.h" />
     <ClInclude Include="src\Dua\Core\Variant\Varient.h" />
-    <ClInclude Include="src\Dua\OrthographicCameraController.h" />
     <ClInclude Include="src\Dua\Core\Memory.h" />
     <ClInclude Include="src\Dua\Core\Timestep.h" />
     <ClInclude Include="src\Dua\Renderer\Buffer.h" />
@@ -175,7 +174,6 @@
     </ClCompile>
     <ClCompile Include="src\Dua\Core\Object\Object.cpp" />
     <ClCompile Include="src\Dua\Core\Variant\Varient.cpp" />
-    <ClCompile Include="src\Dua\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Dua\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp" />

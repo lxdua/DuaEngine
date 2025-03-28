@@ -20,6 +20,4 @@
 #include "Dua/Renderer/Texture.h"
 #include "Dua/Renderer/OrthographicCamera.h"
 
-#include "Dua/OrthographicCameraController.h"
-
 #include "glm/glm.hpp"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Dua.h"
+#include "OrthographicCameraController.h"
 
 namespace Dua {
 

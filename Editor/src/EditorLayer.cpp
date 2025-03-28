@@ -139,7 +139,7 @@ namespace Dua {
             // ¶¯Ì¬µ÷ÕûÖ¡»º³å³ß´ç
             if (m_ViewportSize.x != viewportSize.x || m_ViewportSize.y != viewportSize.y)
             {
-                m_Framebuffer->Resize(viewportSize.x, viewportSize.y);
+                //m_Framebuffer->Resize(viewportSize.x, viewportSize.y);
                 m_ViewportSize = { viewportSize.x, viewportSize.y };
 
                 m_CameraController.OnResize((float)viewportSize.x, (float)viewportSize.y);
