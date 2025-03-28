@@ -11,22 +11,26 @@ namespace Dua {
 
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		float actualSpeed = m_CameraTranslationSpeed * powf(m_ZoomLevel, 1.3f);
+
 		if (Input::IsKeyPressed(DUA_KEY_A))
 		{
-			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
+			m_CameraPosition.x -= actualSpeed * ts;
 		}
 		else if (Input::IsKeyPressed(DUA_KEY_D))
 		{
-			m_CameraPosition.x += m_CameraTranslationSpeed * ts;
+			m_CameraPosition.x += actualSpeed * ts;
 		}
+
 		if (Input::IsKeyPressed(DUA_KEY_W))
 		{
-			m_CameraPosition.y += m_CameraTranslationSpeed * ts;
+			m_CameraPosition.y += actualSpeed * ts;
 		}
 		else if (Input::IsKeyPressed(DUA_KEY_S))
 		{
-			m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
+			m_CameraPosition.y -= actualSpeed * ts;
 		}
+
 		m_Camera.SetPosition(m_CameraPosition);
 	}
 
@@ -41,6 +45,7 @@ namespace Dua {
 	{
 		m_ZoomLevel = std::max(0.1f, m_ZoomLevel - e.GetYOffset() * 0.1f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+		std::cout << "ZoomLevel: " << m_ZoomLevel << std::endl;
 		return false;
 	}
 

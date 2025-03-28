@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DuaEngine", "DuaEngine\DuaE
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SandBox", "SandBox\SandBox.vcxproj", "{CBA1FDAC-45C6-4A18-8A95-C6184952612A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor", "Editor\Editor.vcxproj", "{38B15B11-416A-4B26-98DB-577A03D4E0BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{CBA1FDAC-45C6-4A18-8A95-C6184952612A}.Release|x64.Build.0 = Release|x64
 		{CBA1FDAC-45C6-4A18-8A95-C6184952612A}.Release|x86.ActiveCfg = Release|Win32
 		{CBA1FDAC-45C6-4A18-8A95-C6184952612A}.Release|x86.Build.0 = Release|Win32
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Debug|x64.ActiveCfg = Debug|x64
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Debug|x64.Build.0 = Debug|x64
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Debug|x86.ActiveCfg = Debug|Win32
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Debug|x86.Build.0 = Debug|Win32
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Release|x64.ActiveCfg = Release|x64
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Release|x64.Build.0 = Release|x64
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Release|x86.ActiveCfg = Release|Win32
+		{38B15B11-416A-4B26-98DB-577A03D4E0BB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
