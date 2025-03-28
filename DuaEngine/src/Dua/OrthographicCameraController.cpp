@@ -41,6 +41,13 @@ namespace Dua {
 		dispatcher.Dispatch<WindowResizeEvent>(DUA_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
 	}
 
+	void OrthographicCameraController::OnResize(float width, float height)
+	{
+		if (height > 0)
+			m_AspectRatio = width / height;
+		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+	}
+
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		m_ZoomLevel = std::max(0.1f, m_ZoomLevel - e.GetYOffset() * 0.1f);
@@ -51,9 +58,7 @@ namespace Dua {
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		if (e.GetHeight() > 0)
-			m_AspectRatio = e.GetWidth() / e.GetHeight();
-		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+		//OnResize((float)e.GetWidth(), (float)e.GetHeight());
 		return false;
 	}
 

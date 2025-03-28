@@ -22,7 +22,6 @@ namespace Dua {
 		ShaderLibrary m_ShaderLib;
 
 		glm::vec2 m_ViewportSize = { 1280.0f,720.0f };
-		float m_TargetAspectRatio = 16.0f / 9.0f;
 
 		Ref<Shader> m_SquareShader;
 		Ref<VertexArray> m_SquareVA;

@@ -80,10 +80,24 @@ namespace Dua {
         //-----------------------------
         if (ImGui::BeginMenuBar())
         {
-            if (ImGui::BeginMenu("File"))
+            if (ImGui::BeginMenu("Project"))
             {
+                if (ImGui::MenuItem("Project Settings"))
+                    ;
                 if (ImGui::MenuItem("Exit"))
                     Dua::Application::GetSingleton().Close();
+                ImGui::EndMenu();
+            }
+            if (ImGui::BeginMenu("Editor"))
+            {
+                if (ImGui::MenuItem("Editor Settings"))
+                    ;
+                ImGui::EndMenu();
+            }
+            if (ImGui::BeginMenu("Help"))
+            {
+                if (ImGui::MenuItem("About Dua"))
+                    ;
                 ImGui::EndMenu();
             }
             ImGui::EndMenuBar();
@@ -95,7 +109,6 @@ namespace Dua {
         if (ImGui::Begin("Scene", nullptr, ImGuiWindowFlags_NoCollapse))
         {
             // 场景层级显示
-            ImGui::Text("Scene Hierarchy");
             ImGui::Separator();
             ImGui::Button("Camera");
             ImGui::Button("Light");
@@ -103,7 +116,7 @@ namespace Dua {
         }
         ImGui::End();
 
-        if (ImGui::Begin("Content", nullptr, ImGuiWindowFlags_NoCollapse))
+        if (ImGui::Begin("File", nullptr, ImGuiWindowFlags_NoCollapse))
         {
             // 文件浏览器实现
             ImGui::Text("Assets Directory");
@@ -128,6 +141,8 @@ namespace Dua {
             {
                 m_Framebuffer->Resize(viewportSize.x, viewportSize.y);
                 m_ViewportSize = { viewportSize.x, viewportSize.y };
+
+                m_CameraController.OnResize((float)viewportSize.x, (float)viewportSize.y);
             }
 
             // 显示帧缓冲内容（自动填充窗口）
@@ -143,21 +158,7 @@ namespace Dua {
         //-----------------------------
         if (ImGui::Begin("Inspector", nullptr, ImGuiWindowFlags_NoCollapse))
         {
-            /*
-            static float rotation[3] = { 0 };
-            static float scale[3] = { 1,1,1 };
 
-            ImGui::Text("Transform");
-            ImGui::Separator();
-            ImGui::DragFloat3("Position", m_Position, 0.1f);
-            ImGui::DragFloat3("Rotation", rotation, 1.0f);
-            ImGui::DragFloat3("Scale", scale, 0.1f);
-
-            ImGui::Spacing();
-            ImGui::Text("Material");
-            ImGui::ColorEdit3("Albedo", m_AlbedoColor);
-            ImGui::DragFloat("Metallic", &m_Metallic, 0.01f, 0.0f, 1.0f);
-            */
         }
         ImGui::End();
 
@@ -171,6 +172,5 @@ namespace Dua {
     {
         m_CameraController.OnEvent(event);
     }
-
 
 }
