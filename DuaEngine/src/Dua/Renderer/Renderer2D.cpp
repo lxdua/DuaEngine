@@ -97,7 +97,7 @@ namespace Dua {
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
 		s_Data->TextureShader->Bind();
-		s_Data->TextureShader->SetMat4("ViewProjection", camera.GetViewProjectionMatrix());
+		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 
 		s_Data->QuadIndexCount = 0;
 		s_Data->QuadVertexBufferPtr = s_Data->QuadVertexBufferBase;
@@ -183,8 +183,13 @@ namespace Dua {
 			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
 		s_Data->TextureShader->Bind();
-		s_Data->TextureShader->SetMat4("TRANSFORM", transform);
+		s_Data->TextureShader->SetMat4("u_Transform", transform);
 		
+	}
+
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D>& texture, glm::vec4 modulate)
+	{
+
 	}
 
 	void Renderer2D::FlushAndReset()

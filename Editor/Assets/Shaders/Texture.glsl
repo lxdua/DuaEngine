@@ -6,8 +6,8 @@ layout(location = 1) in vec2 a_UV;
 layout(location = 2) in float a_TexIndex;
 layout(location = 3) in vec4 a_Modulate;
 
-uniform mat4 ViewProjection;
-uniform mat4 TRANSFORM;
+uniform mat4 u_ViewProjection;
+uniform mat4 u_Transform;
 
 out vec2 v_UV;
 out float v_TexIndex;
@@ -18,8 +18,8 @@ void main()
 	v_UV = a_UV;
 	v_TexIndex = a_TexIndex;
 	v_Modulate = a_Modulate;
-	gl_Position = ViewProjection * TRANSFORM * vec4(a_Position, 1.0);
-	//gl_Position = ViewProjection * vec4(a_Position, 1.0);
+	gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+	//gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 }
 
 

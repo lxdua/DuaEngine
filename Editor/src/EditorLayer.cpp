@@ -18,8 +18,8 @@ namespace Dua {
 
         m_Scene = CreateRef<Scene>();
 
-        //auto sprite = m_Scene->CreateEntity("Sprite");
-        //sprite.AddComponent<SpriteComponent>(sprite);
+        auto colorRect = m_Scene->CreateEntity("Color Rect");
+        colorRect.AddComponent<ColorRectComponent>(glm::vec4(0.4f, 1.0f, 1.0f, 1.0f));
     }
 
     void EditorLayer::OnDetach()
@@ -28,8 +28,6 @@ namespace Dua {
 
     void EditorLayer::OnUpdate(Timestep ts)
     {
-        m_Scene->OnUpdate(ts);
-
         m_CameraController.OnUpdate(ts);
 
         m_Framebuffer->Bind();
@@ -37,13 +35,9 @@ namespace Dua {
         RenderCommand::Clear();
 
         Renderer2D::BeginScene(m_CameraController.GetCamera());
-
-        Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 0.0f, m_Texture, m_SquareColor);
-
-        for (float x = -5.0f; x <= 5.0f; x += 1)Renderer2D::DrawQuad({ x,-0.5f }, { 1.0f,1.0f }, 0, m_Texture, { 1.0f,1.0f,1.0f,1.0f });
-        for (float x = -5.0f; x <= 5.0f; x += 1)Renderer2D::DrawQuad({ x,0.5f }, { 1.0f,1.0f }, 0, m_Texture, { (x + 5) / 10.0f,0.5f,1.0f,0.5f });
-
+        m_Scene->OnUpdate(ts);
         Renderer2D::EndScene();
+
         m_Framebuffer->UnBind();
     }
 

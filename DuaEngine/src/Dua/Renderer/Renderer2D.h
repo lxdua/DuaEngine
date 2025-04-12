@@ -19,6 +19,8 @@ namespace Dua {
 		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, glm::vec4 modulate);
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, glm::vec4 modulate);
 
+		static void DrawQuad(const glm::mat4& transform, const Ref<Texture2D>& texture, glm::vec4 modulate);
+
 	private:
 		static void FlushAndReset();
 

@@ -338,9 +338,6 @@
     <ClCompile Include="src\Dua\Scene\Scene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dua\Scene\Components.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dua\Scene\Entity.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

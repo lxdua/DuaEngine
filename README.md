@@ -4,7 +4,7 @@
 架构基本来自Cherno大佬的Hazel 
 
 <div align="center">
-  <img src="show/screenshot.png" width="600">
+  <img src="Show/screenshot.png" width="600">
 </div>
 
 ---

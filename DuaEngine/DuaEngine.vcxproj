@@ -190,7 +190,6 @@
     <ClCompile Include="src\Dua\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Dua\Scene\2D\Node2D.cpp" />
     <ClCompile Include="src\Dua\Scene\2D\Sprite2D.cpp" />
-    <ClCompile Include="src\Dua\Scene\Components.cpp" />
     <ClCompile Include="src\Dua\Scene\Entity.cpp" />
     <ClCompile Include="src\Dua\Scene\Main\CanvasItem.cpp" />
     <ClCompile Include="src\Dua\Scene\Main\Node.cpp" />

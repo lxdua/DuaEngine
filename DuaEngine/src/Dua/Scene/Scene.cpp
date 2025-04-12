@@ -5,6 +5,7 @@
 #include "Components.h"
 
 #include "glm/glm.hpp"
+#include "Dua/Renderer/Renderer2D.h"
 
 namespace Dua {
 
@@ -26,7 +27,12 @@ namespace Dua {
 
 	void Scene::OnUpdate(Timestep ts)
 	{
-
+		auto group = m_Registry.group<TransformComponent>(entt::get<ColorRectComponent>);
+		for (auto entity : group)
+		{
+			auto& [transform, sprite] = group.get<TransformComponent, ColorRectComponent>(entity);
+			//Renderer2D::DrawQuad()
+		}
 	}
 
 }
