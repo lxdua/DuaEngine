@@ -9,34 +9,41 @@ namespace Dua {
 
     void EditorLayer::OnAttach()
     {
-        m_Texture = Dua::Texture2D::Create("Assets/Textures/ntx.png");
+        m_Texture = Texture2D::Create("Assets/Textures/ntx.png");
 
-        Dua::FramebufferSpecification fbSpec;
+        FramebufferSpecification fbSpec;
         fbSpec.Width = 1280;
         fbSpec.Height = 720;
-        m_Framebuffer = Dua::Framebuffer::Create(fbSpec);
+        m_Framebuffer = Framebuffer::Create(fbSpec);
+
+        m_Scene = CreateRef<Scene>();
+
+        //auto sprite = m_Scene->CreateEntity("Sprite");
+        //sprite.AddComponent<SpriteComponent>(sprite);
     }
 
     void EditorLayer::OnDetach()
     {
     }
 
-    void EditorLayer::OnUpdate(Dua::Timestep ts)
+    void EditorLayer::OnUpdate(Timestep ts)
     {
+        m_Scene->OnUpdate(ts);
+
         m_CameraController.OnUpdate(ts);
 
         m_Framebuffer->Bind();
-        Dua::RenderCommand::SetClearColor({ 0.15,0.15,0.15,1.0 });
-        Dua::RenderCommand::Clear();
+        RenderCommand::SetClearColor({ 0.15,0.15,0.15,1.0 });
+        RenderCommand::Clear();
 
-        Dua::Renderer2D::BeginScene(m_CameraController.GetCamera());
+        Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-        Dua::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 0.0f, m_Texture, m_SquareColor);
+        Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, 0.0f, m_Texture, m_SquareColor);
 
-        for (float x = -5.0f; x <= 5.0f; x += 1)Dua::Renderer2D::DrawQuad({ x,-0.5f }, { 1.0f,1.0f }, 0, m_Texture, { 1.0f,1.0f,1.0f,1.0f });
-        for (float x = -5.0f; x <= 5.0f; x += 1)Dua::Renderer2D::DrawQuad({ x,0.5f }, { 1.0f,1.0f }, 0, m_Texture, { (x + 5) / 10.0f,0.5f,1.0f,0.5f });
+        for (float x = -5.0f; x <= 5.0f; x += 1)Renderer2D::DrawQuad({ x,-0.5f }, { 1.0f,1.0f }, 0, m_Texture, { 1.0f,1.0f,1.0f,1.0f });
+        for (float x = -5.0f; x <= 5.0f; x += 1)Renderer2D::DrawQuad({ x,0.5f }, { 1.0f,1.0f }, 0, m_Texture, { (x + 5) / 10.0f,0.5f,1.0f,0.5f });
 
-        Dua::Renderer2D::EndScene();
+        Renderer2D::EndScene();
         m_Framebuffer->UnBind();
     }
 
@@ -85,7 +92,7 @@ namespace Dua {
                 if (ImGui::MenuItem("Project Settings"))
                     ;
                 if (ImGui::MenuItem("Exit"))
-                    Dua::Application::GetSingleton().Close();
+                    Application::GetSingleton().Close();
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("Editor"))
@@ -168,7 +175,7 @@ namespace Dua {
         ImGui::End();
     }
 
-    void EditorLayer::OnEvent(Dua::Event& event)
+    void EditorLayer::OnEvent(Event& event)
     {
         m_CameraController.OnEvent(event);
     }

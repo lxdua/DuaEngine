@@ -19,6 +19,9 @@ namespace Dua {
 		virtual void OnEvent(Event& event) override;
 
 	private:
+
+		Ref<Scene> m_Scene;
+
 		OrthographicCameraController m_CameraController;
 		ShaderLibrary m_ShaderLib;
 

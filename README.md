@@ -1,25 +1,18 @@
 # [DuaEngine] 🎮
 
 一个基于 **C++** 和 **OpenGL** 的图一乐 游戏/渲染 引擎\
-架构基本来自Cherno大佬的Hazel
+架构基本来自Cherno大佬的Hazel 
 
----
-
-## 🛠️ 技术栈
-- **语言**: C++17  
-- **图形API**: OpenGL3，以后可能加上Vulkan？
-- **UI框架**: ImGui Docking  
-- **窗口管理**: GLFW  
-- **数学库**: GLM（OpenGL Mathematics）  
-- **日志库**：等我感觉麻烦了再补  
-- **构建工具**: 以后补，应该是CMake  
+<div align="center">
+  <img src="show/screenshot.png" width="600">
+</div>
 
 ---
 
 ## 🗓️ 里程
 可能写的比较糊
 - **（持续更新中。。。）** 🔨
-- **2025/03/27** 开始模仿Godot
+- **2025/04/12** 加入entt 
 - **2025/03/24** 2D渲染器，批处理渲染
 - **2025/03/17** 着色器库，wasd鼠标控制摄像机
 - **2025/03/05** 加载shader文本文件
@@ -37,4 +30,5 @@
 - [GLFW](https://www.glfw.org) - 跨平台窗口/输入管理  
 - [GLAD](https://glad.dav1d.de/) - OpenGL扩展加载器
 - [GLM](https://glm.g-truc.net) - 数学库
-- [ImGui](https://github.com/ocornut/imgui/tree/docking) - 即时模式调试UI框架  
+- [ImGui](https://github.com/ocornut/imgui/tree/docking) - 即时模式调试UI框架 
+- [EnTT](https://github.com/skypjack/entt) - ECS框架 

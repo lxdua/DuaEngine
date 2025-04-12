@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3rdparty\entt\entt.hpp" />
     <ClInclude Include="3rdparty\GLAD\glad.h" />
     <ClInclude Include="3rdparty\GLAD\khrplatform.h" />
     <ClInclude Include="3rdparty\GLFW\glfw3.h" />
@@ -52,8 +53,11 @@
     <ClInclude Include="src\Dua\Renderer\VertexArray.h" />
     <ClInclude Include="src\Dua\Scene\2D\Node2D.h" />
     <ClInclude Include="src\Dua\Scene\2D\Sprite2D.h" />
+    <ClInclude Include="src\Dua\Scene\Components.h" />
+    <ClInclude Include="src\Dua\Scene\Entity.h" />
     <ClInclude Include="src\Dua\Scene\Main\CanvasItem.h" />
     <ClInclude Include="src\Dua\Scene\Main\Node.h" />
+    <ClInclude Include="src\Dua\Scene\Scene.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Dua\ImGui\ImGuiLayer.h" />
@@ -186,8 +190,11 @@
     <ClCompile Include="src\Dua\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Dua\Scene\2D\Node2D.cpp" />
     <ClCompile Include="src\Dua\Scene\2D\Sprite2D.cpp" />
+    <ClCompile Include="src\Dua\Scene\Components.cpp" />
+    <ClCompile Include="src\Dua\Scene\Entity.cpp" />
     <ClCompile Include="src\Dua\Scene\Main\CanvasItem.cpp" />
     <ClCompile Include="src\Dua\Scene\Main\Node.cpp" />
+    <ClCompile Include="src\Dua\Scene\Scene.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Dua\ImGui\ImGuiLayer.cpp" />
@@ -292,7 +299,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -314,7 +321,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -336,7 +343,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -358,7 +365,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
