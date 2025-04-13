@@ -9,6 +9,13 @@
 
 namespace Dua {
 
+	static glm::mat4 CalculateTransform(const glm::vec3& pos, const glm::vec2& size, float rot)
+	{
+		return glm::translate(glm::mat4(1.0f), pos)
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rot), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+	}
+
 	struct QuadVertex
 	{
 		glm::vec3 Position;
@@ -36,6 +43,8 @@ namespace Dua {
 
 		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
 		uint32_t TextureSlotIndex = 1;
+
+		std::unordered_map<Texture2D*, uint32_t> TextureIndexMap;///
 	};
 
 	static Renderer2DStorage* s_Data;
@@ -129,67 +138,50 @@ namespace Dua {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, glm::vec4 modulate)
 	{
-		if (s_Data->QuadIndexCount >= Renderer2DStorage::MaxIndices)
-		{
-			FlushAndReset();
-		}
-
-		float textureIndex = 0.0f;
-		for (uint32_t i = 1; i < s_Data->TextureSlots.size(); i++)
-		{
-			if (s_Data->TextureSlots[i].get() == texture.get())
-			{
-				textureIndex = (float)i;
-				break;
-			}
-		}
-		if (textureIndex == 0.0f)
-		{
-			textureIndex = (float)s_Data->TextureSlotIndex;
-			s_Data->TextureSlots[s_Data->TextureSlotIndex] = texture;
-			s_Data->TextureSlotIndex++;
-		}
-
-		s_Data->QuadVertexBufferPtr->Position = position;
-		s_Data->QuadVertexBufferPtr->UV = { 0.0f,0.0f };
-		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr->Modulate = modulate;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadVertexBufferPtr->Position = { position.x + size.x, position.y, 0.0f };
-		s_Data->QuadVertexBufferPtr->UV = { 1.0f,0.0f };
-		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr->Modulate = modulate;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadVertexBufferPtr->Position = { position.x + size.x, position.y + size.y, 0.0f };
-		s_Data->QuadVertexBufferPtr->UV = { 1.0f,1.0f };
-		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr->Modulate = modulate;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadVertexBufferPtr->Position = { position.x, position.y + size.y, 0.0f };
-		s_Data->QuadVertexBufferPtr->UV = { 0.0f,1.0f };
-		s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr->Modulate = modulate;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadIndexCount += 6;
-
-		
-		glm::mat4 transform =
-			glm::translate(glm::mat4(1.0f), position) *
-			glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f,0.0f,1.0f }) *
-			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-
-		s_Data->TextureShader->Bind();
-		s_Data->TextureShader->SetMat4("u_Transform", transform);
-		
+		glm::mat4 transform = CalculateTransform(position, size, rotation);
+		DrawQuad(transform, texture, modulate);
 	}
 
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D>& texture, glm::vec4 modulate)
 	{
+		float textureIndex = 0.0f;
+		auto it = s_Data->TextureIndexMap.find(texture.get());
+		if (it != s_Data->TextureIndexMap.end())
+		{
+			textureIndex = static_cast<float>(it->second);
+		}
+		else
+		{
+			if (s_Data->TextureSlotIndex >= Renderer2DStorage::MaxTextureSlots)
+			{
+				FlushAndReset();
+			}
+			textureIndex = static_cast<float>(s_Data->TextureSlotIndex);
+			s_Data->TextureSlots[s_Data->TextureSlotIndex] = texture;
+			s_Data->TextureIndexMap[texture.get()] = s_Data->TextureSlotIndex;
+			s_Data->TextureSlotIndex++;
+		}
 
+		constexpr glm::vec4 modelPositions[4] = {
+			{0.0f, 0.0f, 0.0f, 1.0f},  // 左下
+			{1.0f, 0.0f, 0.0f, 1.0f},  // 右下
+			{1.0f, 1.0f, 0.0f, 1.0f},  // 右上
+			{0.0f, 1.0f, 0.0f, 1.0f}   // 左上
+		};
+
+		// 写入顶点数据（通过变换矩阵传递给着色器）
+		for (int i = 0; i < 4; ++i)
+		{
+			s_Data->QuadVertexBufferPtr->Position = transform * modelPositions[i];
+			s_Data->QuadVertexBufferPtr->UV = { (i == 0 || i == 3) ? 0.0f : 1.0f, (i < 2) ? 0.0f : 1.0f };
+			s_Data->QuadVertexBufferPtr->TexIndex = textureIndex;
+			s_Data->QuadVertexBufferPtr->Modulate = modulate;
+			s_Data->QuadVertexBufferPtr++;
+		}
+		s_Data->QuadIndexCount += 6;
+
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetMat4("u_Transform", glm::mat4(1.0f));
 	}
 
 	void Renderer2D::FlushAndReset()

@@ -18,8 +18,8 @@ namespace Dua {
 
         m_Scene = CreateRef<Scene>();
 
-        auto colorRect = m_Scene->CreateEntity("Color Rect");
-        colorRect.AddComponent<ColorRectComponent>(glm::vec4(0.4f, 1.0f, 1.0f, 1.0f));
+        auto sprite = m_Scene->CreateEntity("sprite");
+        sprite.AddComponent<SpriteComponent>();
     }
 
     void EditorLayer::OnDetach()

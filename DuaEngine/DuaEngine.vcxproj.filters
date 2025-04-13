@@ -207,6 +207,15 @@
     <ClInclude Include="3rdparty\entt\entt.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\System.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\ScriptableEntity.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dua\Application.cpp">

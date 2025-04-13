@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Components.h"
+#include "System.h"
 
 #include "glm/glm.hpp"
 #include "Dua/Renderer/Renderer2D.h"
@@ -27,12 +28,15 @@ namespace Dua {
 
 	void Scene::OnUpdate(Timestep ts)
 	{
-		auto group = m_Registry.group<TransformComponent>(entt::get<ColorRectComponent>);
-		for (auto entity : group)
+		TransformSystem::UpdateTransforms(m_Registry);
+
+		auto view = m_Registry.view<TransformComponent, SpriteComponent>();
+		for (auto [entity, transform, sprite] : view.each())
 		{
-			auto& [transform, sprite] = group.get<TransformComponent, ColorRectComponent>(entity);
-			//Renderer2D::DrawQuad()
+			transform.SetPosition(transform.Position + glm::vec3(ts, 0, 0));
+			Renderer2D::DrawQuad(transform.Transform, sprite.Texture, sprite.Modulate);
 		}
 	}
 
 }
+
