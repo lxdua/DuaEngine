@@ -20,7 +20,6 @@ namespace Dua {
 	{
 		using ScriptPtr = std::unique_ptr<void, void(*)(void*)>;
 
-		// 生命周期函数指针
 		using InitFunc = void(*)(void*, Entity);
 		using UpdateFunc = void(*)(void*, Entity, float);
 		using DestroyFunc = void(*)(void*, Entity);
@@ -41,11 +40,9 @@ namespace Dua {
 				"Script must implement OnCreate, OnUpdate and OnDestroy"
 				);
 
-			// 自定义删除器
 			auto deleter = [](void* ptr) { delete static_cast<T*>(ptr); };
 			instance = ScriptPtr(new T(), deleter);
 
-			// 绑定函数
 			OnCreate = [](void* ptr, Entity e) { static_cast<T*>(ptr)->OnCreate(e); };
 			OnUpdate = [](void* ptr, Entity e, float dt) { static_cast<T*>(ptr)->OnUpdate(e, dt); };
 			OnDestroy = [](void* ptr, Entity e) { static_cast<T*>(ptr)->OnDestroy(e); };

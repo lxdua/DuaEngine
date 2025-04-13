@@ -19,7 +19,7 @@ namespace Dua {
         void OnUpdate(Entity entity, Timestep ts) {
             // 安全访问组件
             if (m_Transform && entity.IsValid()) {
-                m_Transform->SetPosition(m_Transform->Position + glm::vec3(speed * ts, 0.0, 0.0));
+                m_Transform->SetPosition(m_Transform->Position + glm::vec3(0.0, speed * ts, 0.0));
             }
         }
 
@@ -28,7 +28,7 @@ namespace Dua {
             m_Transform = nullptr;
         }
 
-        float speed = 5.0f;
+        float speed = 0.0f;
 
     private:
         TransformComponent* m_Transform = nullptr;
@@ -52,7 +52,7 @@ namespace Dua {
 
         // 配置脚本参数（类型安全方式）
         if (auto* movement = static_cast<MovementScript*>(script.instance.get())) {
-            movement->speed = 0.5f;
+            movement->speed = -0.5f;
         }
     }
 
