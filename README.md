@@ -4,7 +4,7 @@
 架构基本来自Cherno大佬的Hazel 
 
 <div align="center">
-  <img src="Show/screenshot.png" width="600">
+  <img src="Show/screenshot.png" width="1000">
 </div>
 
 ---
@@ -12,6 +12,7 @@
 ## 🗓️ 里程
 可能写的比较糊
 - **（持续更新中。。。）** 🔨
+- **2025/04/14** 场景管理窗口初步
 - **2025/04/13** 加入了cpp原生脚本组件
 - **2025/04/12** 加入entt，加入了sprite组件
 - **2025/03/24** 2D渲染器，批处理渲染

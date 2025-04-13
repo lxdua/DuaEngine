@@ -24,7 +24,8 @@ namespace Dua {
 	{
 		Entity entity(m_Registry.create(), this);
 		entity.AddComponent<TransformComponent>();
-		auto& tag = entity.AddComponent<TagComponent>();
+		auto& tagc = entity.AddComponent<TagComponent>();
+		tagc.Tag = name;
 		return entity;
 	}
 

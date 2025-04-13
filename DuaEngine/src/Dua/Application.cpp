@@ -61,7 +61,7 @@ namespace Dua {
 		dispatcher.Dispatch<WindowCloseEvent>(DUA_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(DUA_BIND_EVENT_FN(Application::OnWindowResize));
 
-		std::cout << e.ToString() << std::endl;
+		//std::cout << e.ToString() << std::endl;
 
 		for (std::vector<Dua::Layer*>::iterator it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{

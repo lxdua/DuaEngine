@@ -54,6 +54,10 @@ namespace Dua {
         if (auto* movement = static_cast<MovementScript*>(script.instance.get())) {
             movement->speed = -0.5f;
         }
+
+        // Panels
+        m_SceneHierarchyPanel = CreateRef<SceneHierarchyPanel>(m_Scene);
+
     }
 
     void EditorLayer::OnDetach()
@@ -141,15 +145,7 @@ namespace Dua {
         //-----------------------------
         // 4. ×ó²àÃæ°å£¨³¡¾°+ÄÚÈÝä¯ÀÀÆ÷£©
         //-----------------------------
-        if (ImGui::Begin("Scene", nullptr, ImGuiWindowFlags_NoCollapse))
-        {
-            // ³¡¾°²ã¼¶ÏÔÊ¾
-            ImGui::Separator();
-            ImGui::Button("Camera");
-            ImGui::Button("Light");
-            ImGui::Button("Player");
-        }
-        ImGui::End();
+        m_SceneHierarchyPanel->OnImGuiRender();
 
         if (ImGui::Begin("File", nullptr, ImGuiWindowFlags_NoCollapse))
         {

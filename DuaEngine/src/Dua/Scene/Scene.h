@@ -6,6 +6,7 @@
 namespace Dua {
 
 	class Entity;
+	class SceneHierarchyPanel;
 
 	class Scene
 	{
@@ -20,7 +21,9 @@ namespace Dua {
 
 	private:
 		entt::registry m_Registry;
+
 		friend class Entity;
+		friend class SceneHierarchyPanel;
 	};
 
 }

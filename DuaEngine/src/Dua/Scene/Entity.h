@@ -71,6 +71,21 @@ namespace Dua {
             return m_EntityHandle != entt::null && m_Scene != nullptr;
         }
 
+        operator uint32_t() const
+        {
+            return (uint32_t)m_EntityHandle;
+        }
+
+        bool operator==(const Entity& other) const
+        {
+            return m_EntityHandle == other.m_EntityHandle;
+        }
+
+        bool operator!=(const Entity& other) const
+        {
+            return !(*this == other);
+        }
+
         // 显式有效性检查方法
         bool IsValid() const
         {

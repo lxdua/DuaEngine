@@ -3,6 +3,8 @@
 #include "Dua.h"
 #include "OrthographicCameraController.h"
 
+#include "Panels/SceneHierarchyPanel.h"
+
 namespace Dua {
 
 	class EditorLayer : public Layer
@@ -35,6 +37,10 @@ namespace Dua {
 		Ref<Texture2D> m_Texture;
 
 		glm::vec4 m_SquareColor;
+
+		// Panels
+		Ref<SceneHierarchyPanel> m_SceneHierarchyPanel;
+
 	};
 
 }
