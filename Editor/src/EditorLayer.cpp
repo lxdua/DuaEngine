@@ -7,6 +7,33 @@ namespace Dua {
 
     EditorLayer::EditorLayer(const std::string& name) : Layer(name), m_CameraController(1280.0f / 720.0f) {}
 
+    class MovementScript {
+    public:
+        void OnCreate(Entity entity) {
+            // 安全获取组件（利用你的Entity类的方法）
+            if (entity.HasComponent<TransformComponent>()) {
+                m_Transform = &entity.GetComponent<TransformComponent>();
+            }
+        }
+
+        void OnUpdate(Entity entity, Timestep ts) {
+            // 安全访问组件
+            if (m_Transform && entity.IsValid()) {
+                m_Transform->SetPosition(m_Transform->Position + glm::vec3(speed * ts, 0.0, 0.0));
+            }
+        }
+
+        void OnDestroy(Entity entity) {
+            // 清理资源
+            m_Transform = nullptr;
+        }
+
+        float speed = 5.0f;
+
+    private:
+        TransformComponent* m_Transform = nullptr;
+    };
+
     void EditorLayer::OnAttach()
     {
         m_Texture = Texture2D::Create("Assets/Textures/ntx.png");
@@ -20,6 +47,13 @@ namespace Dua {
 
         auto sprite = m_Scene->CreateEntity("sprite");
         sprite.AddComponent<SpriteComponent>();
+        auto& script = sprite.AddComponent<NativeScriptComponent>();
+        script.Bind<MovementScript>();
+
+        // 配置脚本参数（类型安全方式）
+        if (auto* movement = static_cast<MovementScript*>(script.instance.get())) {
+            movement->speed = 0.5f;
+        }
     }
 
     void EditorLayer::OnDetach()

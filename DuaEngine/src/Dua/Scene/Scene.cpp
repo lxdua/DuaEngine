@@ -12,10 +12,12 @@ namespace Dua {
 
 	Scene::Scene()
 	{
+
 	}
 
 	Scene::~Scene()
 	{
+
 	}
 
 	Entity Scene::CreateEntity(const std::string name)
@@ -28,14 +30,20 @@ namespace Dua {
 
 	void Scene::OnUpdate(Timestep ts)
 	{
+		NativeScriptSystem::InitScripts(m_Registry, *this);
+		NativeScriptSystem::UpdateScripts(m_Registry, *this, ts);
 		TransformSystem::UpdateTransforms(m_Registry);
 
 		auto view = m_Registry.view<TransformComponent, SpriteComponent>();
 		for (auto [entity, transform, sprite] : view.each())
 		{
-			transform.SetPosition(transform.Position + glm::vec3(ts, 0, 0));
 			Renderer2D::DrawQuad(transform.Transform, sprite.Texture, sprite.Modulate);
 		}
+	}
+
+	void Scene::OnDestory()
+	{
+		NativeScriptSystem::DestroyScripts(m_Registry, *this);
 	}
 
 }

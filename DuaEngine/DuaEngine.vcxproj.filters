@@ -213,7 +213,7 @@
     <ClInclude Include="src\Dua\Scene\System.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dua\Scene\ScriptableEntity.h">
+    <ClInclude Include="src\Dua\Scene\ScriptMacros.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,7 +22,6 @@
 
 #include "Dua/Scene/Scene.h"
 #include "Dua/Scene/Entity.h"
-#include "Dua/Scene/ScriptableEntity.h"
 #include "Dua/Scene/Components.h"
 #include "Dua/Scene/System.h"
 

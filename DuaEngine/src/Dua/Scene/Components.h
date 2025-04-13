@@ -4,7 +4,6 @@
 #include "glm/glm.hpp"
 #include "Dua/Renderer/Camera.h"
 #include "Dua/Renderer/Texture.h"
-#include "ScriptableEntity.h"
 
 namespace Dua {
 
@@ -19,24 +18,37 @@ namespace Dua {
 
 	struct NativeScriptComponent
 	{
-		ScriptableEntity* Instance = nullptr;
+		using ScriptPtr = std::unique_ptr<void, void(*)(void*)>;
 
-		std::function<void()> InstantiateFunction;
-		std::function<void()> DestroyInstanceFunction;
+		// 生命周期函数指针
+		using InitFunc = void(*)(void*, Entity);
+		using UpdateFunc = void(*)(void*, Entity, float);
+		using DestroyFunc = void(*)(void*, Entity);
 
-		std::function<void(ScriptableEntity*)> OnCreateFunction;
-		std::function<void(ScriptableEntity*)> OnDestroyFunction;
-		std::function<void(ScriptableEntity*, Timestep)> OnUpdateFunction;
+		ScriptPtr instance{ nullptr, [](void*) {} };
+		InitFunc OnCreate = nullptr;
+		UpdateFunc OnUpdate = nullptr;
+		DestroyFunc OnDestroy = nullptr;
+		bool initialized = false;
 
 		template<typename T>
-		void Bind()
+		void Bind() 
 		{
-			InstantiateFunction = [this]() { Instance = new T(); };
-			DestroyInstanceFunction = [&Instance]() { delete (T*)Instance; Instance = nullptr; };
+			static_assert(
+				std::is_invocable_r_v<void, decltype(&T::OnCreate), T*, Entity> &&
+				std::is_invocable_r_v<void, decltype(&T::OnUpdate), T*, Entity, float> &&
+				std::is_invocable_r_v<void, decltype(&T::OnDestroy), T*, Entity>,
+				"Script must implement OnCreate, OnUpdate and OnDestroy"
+				);
 
-			OnCreateFunction = [](ScriptableEntity* instance) { ((T*)instance)->OnCreate(); };
-			OnDestroyFunction = [](ScriptableEntity* instance) { ((T*)instance)->OnDestroy(); };
-			OnUpdateFunction = [](ScriptableEntity* instance, Timestep ts) { ((T*)instance)->OnUpdate(); };
+			// 自定义删除器
+			auto deleter = [](void* ptr) { delete static_cast<T*>(ptr); };
+			instance = ScriptPtr(new T(), deleter);
+
+			// 绑定函数
+			OnCreate = [](void* ptr, Entity e) { static_cast<T*>(ptr)->OnCreate(e); };
+			OnUpdate = [](void* ptr, Entity e, float dt) { static_cast<T*>(ptr)->OnUpdate(e, dt); };
+			OnDestroy = [](void* ptr, Entity e) { static_cast<T*>(ptr)->OnDestroy(e); };
 		}
 	};
 

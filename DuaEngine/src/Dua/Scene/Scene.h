@@ -13,9 +13,10 @@ namespace Dua {
 		Scene();
 		~Scene();
 
-		Entity CreateEntity(const std::string name);
+		Entity CreateEntity(const std::string name = "");
 
 		void OnUpdate(Timestep ts);
+		void OnDestory();
 
 	private:
 		entt::registry m_Registry;

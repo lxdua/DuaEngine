@@ -6,22 +6,40 @@
 
 namespace Dua {
 
-    class NativeScriptSystem
-    {
+    class NativeScriptSystem {
     public:
-        static void UpdateNativeScriptComponent(entt::registry& registry)
-        {
+        // 初始化新添加的脚本
+        static void InitScripts(entt::registry& registry, Scene& scene) {
             auto view = registry.view<NativeScriptComponent>();
-            view.each(
-                [](const auto entity, const auto& nsc)
-                {
-                    if (!nsc.Instance)
-                    {
-                        nsc.InstantiateFunction();
-                    }
-                    //nsc.OnUpdateFunction(nsc.Instance, ts);
+            for (auto [enttEntity, script] : view.each()) {
+                // 使用你的Entity构造函数
+                Entity entity(enttEntity, &scene);
+                if (script.instance && script.OnCreate && !script.initialized) {
+                    script.OnCreate(script.instance.get(), entity);
+                    script.initialized = true;
                 }
-            );
+            }
+        }
+        // 每帧更新脚本
+        static void UpdateScripts(entt::registry& registry, Scene& scene, Timestep ts) {
+            auto view = registry.view<NativeScriptComponent>();
+            for (auto [enttEntity, script] : view.each()) {
+                // 正确构造Entity实例
+                Entity entity(enttEntity, &scene);
+                if (script.instance && script.OnUpdate) {
+                    script.OnUpdate(script.instance.get(), entity, ts);
+                }
+            }
+        }
+        // 销毁脚本
+        static void DestroyScripts(entt::registry& registry, Scene& scene) {
+            auto view = registry.view<NativeScriptComponent>();
+            for (auto [enttEntity, script] : view.each()) {
+                Entity entity(enttEntity, &scene);
+                if (script.instance && script.OnDestroy) {
+                    script.OnDestroy(script.instance.get(), entity);
+                }
+            }
         }
     };
 
@@ -59,7 +77,7 @@ namespace Dua {
             const glm::mat4 rotation = glm::rotate(
                 glm::mat4(1.0f),
                 transform.Rotation,
-                glm::vec3(0.0f, 0.0f, 1.0f) // 绕 Z 轴旋转（2D）
+                glm::vec3(0.0f, 0.0f, 1.0f)
             );
             const glm::mat4 scale = glm::scale(glm::mat4(1.0f), transform.Scale);
             transform.Transform = translation * rotation * scale;

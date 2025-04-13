@@ -59,7 +59,7 @@
     <ClInclude Include="src\Dua\Scene\Main\CanvasItem.h" />
     <ClInclude Include="src\Dua\Scene\Main\Node.h" />
     <ClInclude Include="src\Dua\Scene\Scene.h" />
-    <ClInclude Include="src\Dua\Scene\ScriptableEntity.h" />
+    <ClInclude Include="src\Dua\Scene\ScriptMacros.h" />
     <ClInclude Include="src\Dua\Scene\System.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
