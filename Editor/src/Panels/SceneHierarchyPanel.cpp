@@ -62,6 +62,11 @@ namespace Dua {
 
 	}
 
+	void SceneHierarchyPanel::DrawComponent(Entity entity)
+	{
+
+	}
+
 
 
 }
