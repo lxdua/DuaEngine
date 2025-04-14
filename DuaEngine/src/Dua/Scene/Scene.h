@@ -15,6 +15,7 @@ namespace Dua {
 		~Scene();
 
 		Ref<Entity> CreateEntity(const std::string name = "");
+		void DestroyEntity(Ref<Entity> entity);
 
 		void OnUpdate(Timestep ts);
 		void OnDestory();

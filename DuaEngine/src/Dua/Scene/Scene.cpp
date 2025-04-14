@@ -24,10 +24,19 @@ namespace Dua {
 	{
 		Ref<Entity> entity = CreateRef<Entity>(m_Registry.create(), this);
 		Entity::EntityMap.emplace(entity->m_EntityHandle, entity);
+
 		entity->AddComponent<TransformComponent>();
 		auto& tagc = entity->AddComponent<TagComponent>();
 		tagc.Tag = name;
 		return entity;
+	}
+
+	void Scene::DestroyEntity(Ref<Entity> entity)
+	{
+		m_Registry.destroy(entity->m_EntityHandle);
+		Entity::EntityMap.erase(entity->m_EntityHandle);
+		entity->m_EntityHandle = entt::null;
+		entity->m_Scene = nullptr;
 	}
 
 	void Scene::OnUpdate(Timestep ts)

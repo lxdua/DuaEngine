@@ -10,6 +10,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
+
 namespace Dua {
 
 	SceneHierarchyPanel::SceneHierarchyPanel(const Ref<Scene>& context) : m_Context(context)
@@ -19,12 +20,35 @@ namespace Dua {
 	void SceneHierarchyPanel::OnImGuiRender()
 	{
 		ImGui::Begin("Scene", nullptr, ImGuiWindowFlags_NoScrollbar);
+
+		// 添加创建按钮
+		if (ImGui::Button("Add"))
+		{
+			// 创建新实体
+			Ref<Entity> newEntity = m_Context->CreateEntity("New Entity");
+			m_SelectedEntity = newEntity;
+		}
+		ImGui::SameLine();
+
+		// 添加删除按钮（仅在选中实体时显示）
+		if (m_SelectedEntity)
+		{
+			if (ImGui::Button("Delete"))
+			{
+				m_Context->DestroyEntity(m_SelectedEntity);
+				m_SelectedEntity.reset();
+			}
+			ImGui::SameLine();
+		}
+		ImGui::NewLine();
+
 		auto view = m_Context->m_Registry.view<TagComponent>();
 		for (auto entityID : view) 
 		{
 			DrawEntityNode(Entity::EntityMap[entityID]);
 		}
 		ImGui::End();
+
 
 		ImGui::Begin("Component", nullptr, ImGuiWindowFlags_NoScrollbar);
 		if (m_SelectedEntity)
@@ -44,7 +68,6 @@ namespace Dua {
 			ImGuiTreeNodeFlags_OpenOnDoubleClick; // 双击展开
 
 		
-
 		// 绘制树节点
 		bool isOpen = ImGui::TreeNodeEx((void*)(entity->GetID()), flags, "%s", tag.c_str());
 		
