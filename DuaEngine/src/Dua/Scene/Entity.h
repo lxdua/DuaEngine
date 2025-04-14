@@ -2,6 +2,7 @@
 
 #include "entt/entt.hpp"
 #include <cassert>
+#include <unordered_map>
 
 namespace Dua {
 
@@ -10,6 +11,9 @@ namespace Dua {
     class Entity
     {
     public:
+
+        inline static std::unordered_map<entt::entity, Ref<Entity>> EntityMap;
+
         Entity(entt::entity handle, Scene* scene)
             : m_EntityHandle(handle), m_Scene(scene)
         {
@@ -19,6 +23,12 @@ namespace Dua {
         }
 
         Entity(const Entity& other) = default;
+
+        Entity(const Ref<Entity>& other)
+        {
+            m_EntityHandle = other->m_EntityHandle;
+            m_Scene = other->m_Scene;
+        }
 
         template<typename T, typename... Args>
         T& AddComponent(Args&&... args)
@@ -66,12 +76,7 @@ namespace Dua {
             m_Scene->m_Registry.template remove<T>(m_EntityHandle);
         }
 
-        operator bool() const
-        {
-            return m_EntityHandle != entt::null && m_Scene != nullptr;
-        }
-
-        operator uint32_t() const
+        uint32_t GetID() const
         {
             return (uint32_t)m_EntityHandle;
         }
@@ -95,6 +100,8 @@ namespace Dua {
     private:
         entt::entity m_EntityHandle{ entt::null };
         Scene* m_Scene = nullptr;
+
+        friend class Scene;
     };
 
 }

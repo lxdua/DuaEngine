@@ -1,7 +1,7 @@
 #include "EditorLayer.h"
 
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 namespace Dua {
 
@@ -10,25 +10,23 @@ namespace Dua {
     class MovementScript {
     public:
         void OnCreate(Entity entity) {
-            // 安全获取组件（利用你的Entity类的方法）
             if (entity.HasComponent<TransformComponent>()) {
                 m_Transform = &entity.GetComponent<TransformComponent>();
             }
         }
 
         void OnUpdate(Entity entity, Timestep ts) {
-            // 安全访问组件
             if (m_Transform && entity.IsValid()) {
-                m_Transform->SetPosition(m_Transform->Position + glm::vec3(0.0, speed * ts, 0.0));
+                // 绕 Y 轴旋转（单位：弧度/秒）
+                m_Transform->SetRotation(m_Transform->Rotation + speed * ts);
             }
         }
 
         void OnDestroy(Entity entity) {
-            // 清理资源
             m_Transform = nullptr;
         }
 
-        float speed = 0.0f;
+        float speed = 1.0f; // 默认 1 弧度/秒（约 57.3 度/秒）
 
     private:
         TransformComponent* m_Transform = nullptr;
@@ -46,8 +44,8 @@ namespace Dua {
         m_Scene = CreateRef<Scene>();
 
         auto sprite = m_Scene->CreateEntity("sprite");
-        sprite.AddComponent<SpriteComponent>();
-        auto& script = sprite.AddComponent<NativeScriptComponent>();
+        sprite->AddComponent<SpriteComponent>();
+        auto& script = sprite->AddComponent<NativeScriptComponent>();
         script.Bind<MovementScript>();
 
         // 配置脚本参数（类型安全方式）

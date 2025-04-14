@@ -14,14 +14,12 @@ namespace Dua {
 		Scene();
 		~Scene();
 
-		Entity CreateEntity(const std::string name = "");
+		Ref<Entity> CreateEntity(const std::string name = "");
 
 		void OnUpdate(Timestep ts);
 		void OnDestory();
 
-	private:
 		entt::registry m_Registry;
-
 		friend class Entity;
 		friend class SceneHierarchyPanel;
 	};

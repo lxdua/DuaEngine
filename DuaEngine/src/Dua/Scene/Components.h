@@ -61,30 +61,9 @@ namespace Dua {
 		TransformComponent(const TransformComponent&) = default;
 		TransformComponent(const glm::mat4& transform) : Transform(transform) {}
 
-		void SetPosition(const glm::vec3& pos)
-		{
-			if (Position != pos)
-			{
-				Position = pos;
-				Dirty = true;
-			}
-		}
-		void SetRotation(float radians)
-		{
-			if (Rotation != radians)
-			{
-				Rotation = radians;
-				Dirty = true;
-			}
-		}
-		void SetScale(const glm::vec3& scale)
-		{
-			if (Scale != scale)
-			{
-				Scale = scale;
-				Dirty = true;
-			}
-		}
+		void SetPosition(const glm::vec3& pos) { if (Position != pos) { Position = pos; Dirty = true; } }
+		void SetRotation(float radians) { if (Rotation != radians) { Rotation = radians; Dirty = true; } }
+		void SetScale(const glm::vec3& scale) { if (Scale != scale) { Scale = scale; Dirty = true; } }
 	};
 
 	struct SpriteComponent

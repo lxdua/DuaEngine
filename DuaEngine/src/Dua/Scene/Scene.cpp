@@ -20,11 +20,12 @@ namespace Dua {
 
 	}
 
-	Entity Scene::CreateEntity(const std::string name)
+	Ref<Entity> Scene::CreateEntity(const std::string name)
 	{
-		Entity entity(m_Registry.create(), this);
-		entity.AddComponent<TransformComponent>();
-		auto& tagc = entity.AddComponent<TagComponent>();
+		Ref<Entity> entity = CreateRef<Entity>(m_Registry.create(), this);
+		Entity::EntityMap.emplace(entity->m_EntityHandle, entity);
+		entity->AddComponent<TransformComponent>();
+		auto& tagc = entity->AddComponent<TagComponent>();
 		tagc.Tag = name;
 		return entity;
 	}
