@@ -1,0 +1,1155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Dua\Core\Application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\EntryPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Events\Event.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Events\KeyEvent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Events\MouseEvent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Events\ApplicationEvent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\duapch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Core\Window.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Layer\Layer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Layer\LayerStack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\ImGui\ImGuiLayer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\GLAD\glad.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\GLAD\khrplatform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\GLFW\glfw3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\GLFW\glfw3native.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_glfw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_win32.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_opengl3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\imgui.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\imconfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\imgui_internal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\imstb_rectpack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\imstb_textedit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\ImGui\imstb_truetype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Core\Input\Input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Core\Input\InputCodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\GraphicsContext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\VertexArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\RendererAPI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\RenderCommand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Core\Timestep.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Core\Memory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\stb\stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Renderer2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Core\Random.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Framebuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\Scene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\Components.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\Entity.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\entt\entt.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Renderer\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\System.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Scene\SceneSerializer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\Utils\PlatformUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\contrib\anchordict.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\contrib\graphbuilder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\iterator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\iterator_fwd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\memory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node_iterator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node_ref.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\convert.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\emit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\iterator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\parse.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\ptr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\anchor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\binary.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\depthguard.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\dll.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitfromevents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitterdef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emittermanip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitterstyle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\eventhandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\exceptions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\mark.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\noexcept.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\null.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\ostream_wrapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\parser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\stlemitter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\yaml.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\contrib\graphbuilderadapter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\collectionstack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\directives.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\emitterstate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\emitterutils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\exp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\indentation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\nodebuilder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\nodeevents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\ptr_vector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\regex_yaml.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\regeximpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\scanner.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\scanscalar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\scantag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\setting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\singledocparser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\stream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\streamcharsource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\stringsource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\yaml-cpp\src\token.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\include\box2d\base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\include\box2d\box2d.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\include\box2d\collision.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\include\box2d\id.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\include\box2d\math_functions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\include\box2d\types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\aabb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\arena_allocator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\array.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\atomic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\bitset.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\body.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\broad_phase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\constants.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\constraint_graph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\contact.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\contact_solver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\ctz.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\id_pool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\island.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\joint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\sensor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\shape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\solver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\solver_set.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\table.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\box2d\src\world.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\LuaScript\LuaScriptComponent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\compatibility\compat-5.3.c.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\compatibility\compat-5.3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\compatibility\compat-5.4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\compatibility\lua_version.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\detail\build_version.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack\detail\pairs.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\as_args.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\as_returns.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\assert.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\base_traits.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\bind_traits.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\bytecode.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\call.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\compatibility.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\config.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\coroutine.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\debug.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\demangle.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\deprecate.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\dump_handler.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\ebco.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\environment.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\epilogue.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\error.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\error_handler.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\forward.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\forward_detail.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_result.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_types.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_types_core.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_types_overloaded.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_types_stateful.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_types_stateless.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\function_types_templated.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\in_place.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\inheritance.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\load_result.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\lua_table.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\lua_value.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\make_reference.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\metatable.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\object.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\object_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\optional.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\optional_implementation.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\overload.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\packaged_coroutine.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\pairs_iterator.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\pointer_like.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\policies.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\prologue.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\property.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\protect.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\protected_function.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\protected_function_result.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\protected_handler.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\proxy_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\raii.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\reference.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\resolve.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\sol.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_check.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_check_get.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_check_get_qualified.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_check_get_unqualified.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_check_qualified.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_check_unqualified.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_core.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_field.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_get.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_get_qualified.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_get_unqualified.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_guard.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_iterator.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_pop.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_probe.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_proxy.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_proxy_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_push.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\stack_reference.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\state.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\state_handling.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\state_view.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\string_view.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\table.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\table_core.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\table_iterator.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\table_proxy.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\thread.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\tie.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\traits.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\trampoline.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\types.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\unicode.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\unique_usertype_traits.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\unsafe_function.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\unsafe_function_result.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\userdata.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype_container.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype_container_launch.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype_core.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype_proxy.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype_storage.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\usertype_traits.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\variadic_args.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\variadic_results.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\version.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\sol\wrapper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dua\LuaScript\LuaMathBindings.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\luajit\include\lua.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\luajit\include\lauxlib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\luajit\include\lua.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\luajit\include\luaconf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\luajit\include\luajit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\luajit\include\lualib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Dua\Core\Application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\duapch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Layer\Layer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Layer\LayerStack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\GLAD\glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\ImGui\ImGuiLayer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_glfw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_win32.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_opengl3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_demo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_draw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_tables.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_widgets.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Buffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Renderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\VertexArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\RendererAPI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\RenderCommand.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\stb\stb_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Renderer2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Renderer\Framebuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Scene\Scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Scene\SceneSerializer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\PlatformUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\contrib\graphbuilder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\contrib\graphbuilderadapter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\binary.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\convert.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\depthguard.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\directives.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\emit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitfromevents.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitterstate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitterutils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\exceptions.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\exp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\memory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\node.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\node_data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\nodebuilder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\nodeevents.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\null.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\ostream_wrapper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\parse.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\parser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\regex_yaml.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\scanner.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\scanscalar.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\scantag.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\scantoken.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\simplekey.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\singledocparser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\stream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\tag.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\aabb.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\arena_allocator.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\array.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\bitset.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\body.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\broad_phase.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\constraint_graph.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\contact.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\contact_solver.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\core.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\distance.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\distance_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\dynamic_tree.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\geometry.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\hull.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\id_pool.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\island.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\manifold.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\math_functions.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\motor_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\mouse_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\mover.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\prismatic_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\revolute_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\sensor.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\shape.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\solver.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\solver_set.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\table.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\timer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\types.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\weld_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\wheel_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\box2d\src\world.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dua\LuaScript\LuaScriptComponent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="3rdparty\GLFW\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="3rdparty\ImGui\misc\debuggers\imgui.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3rdparty\ImGui\misc\debuggers\imgui.natstepfilter" />
+  </ItemGroup>
+</Project>

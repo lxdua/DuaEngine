@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="3rdparty\box2d\include\box2d\base.h" />
+    <ClInclude Include="3rdparty\box2d\include\box2d\box2d.h" />
+    <ClInclude Include="3rdparty\box2d\include\box2d\collision.h" />
+    <ClInclude Include="3rdparty\box2d\include\box2d\id.h" />
+    <ClInclude Include="3rdparty\box2d\include\box2d\math_functions.h" />
+    <ClInclude Include="3rdparty\box2d\include\box2d\types.h" />
+    <ClInclude Include="3rdparty\box2d\src\aabb.h" />
+    <ClInclude Include="3rdparty\box2d\src\arena_allocator.h" />
+    <ClInclude Include="3rdparty\box2d\src\array.h" />
+    <ClInclude Include="3rdparty\box2d\src\atomic.h" />
+    <ClInclude Include="3rdparty\box2d\src\bitset.h" />
+    <ClInclude Include="3rdparty\box2d\src\body.h" />
+    <ClInclude Include="3rdparty\box2d\src\broad_phase.h" />
+    <ClInclude Include="3rdparty\box2d\src\constants.h" />
+    <ClInclude Include="3rdparty\box2d\src\constraint_graph.h" />
+    <ClInclude Include="3rdparty\box2d\src\contact.h" />
+    <ClInclude Include="3rdparty\box2d\src\contact_solver.h" />
+    <ClInclude Include="3rdparty\box2d\src\core.h" />
+    <ClInclude Include="3rdparty\box2d\src\ctz.h" />
+    <ClInclude Include="3rdparty\box2d\src\id_pool.h" />
+    <ClInclude Include="3rdparty\box2d\src\island.h" />
+    <ClInclude Include="3rdparty\box2d\src\joint.h" />
+    <ClInclude Include="3rdparty\box2d\src\sensor.h" />
+    <ClInclude Include="3rdparty\box2d\src\shape.h" />
+    <ClInclude Include="3rdparty\box2d\src\solver.h" />
+    <ClInclude Include="3rdparty\box2d\src\solver_set.h" />
+    <ClInclude Include="3rdparty\box2d\src\table.h" />
+    <ClInclude Include="3rdparty\box2d\src\world.h" />
+    <ClInclude Include="3rdparty\entt\entt.hpp" />
+    <ClInclude Include="3rdparty\GLAD\glad.h" />
+    <ClInclude Include="3rdparty\GLAD\khrplatform.h" />
+    <ClInclude Include="3rdparty\GLFW\glfw3.h" />
+    <ClInclude Include="3rdparty\GLFW\glfw3native.h" />
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="3rdparty\ImGui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="3rdparty\ImGui\imconfig.h" />
+    <ClInclude Include="3rdparty\ImGui\imgui.h" />
+    <ClInclude Include="3rdparty\ImGui\imgui_internal.h" />
+    <ClInclude Include="3rdparty\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="3rdparty\ImGui\imstb_textedit.h" />
+    <ClInclude Include="3rdparty\ImGui\imstb_truetype.h" />
+    <ClInclude Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.h" />
+    <ClInclude Include="3rdparty\luajit\include\lauxlib.h" />
+    <ClInclude Include="3rdparty\luajit\include\lua.h" />
+    <ClInclude Include="3rdparty\luajit\include\lua.hpp" />
+    <ClInclude Include="3rdparty\luajit\include\luaconf.h" />
+    <ClInclude Include="3rdparty\luajit\include\luajit.h" />
+    <ClInclude Include="3rdparty\luajit\include\lualib.h" />
+    <ClInclude Include="3rdparty\sol\assert.hpp" />
+    <ClInclude Include="3rdparty\sol\as_args.hpp" />
+    <ClInclude Include="3rdparty\sol\as_returns.hpp" />
+    <ClInclude Include="3rdparty\sol\base_traits.hpp" />
+    <ClInclude Include="3rdparty\sol\bind_traits.hpp" />
+    <ClInclude Include="3rdparty\sol\bytecode.hpp" />
+    <ClInclude Include="3rdparty\sol\call.hpp" />
+    <ClInclude Include="3rdparty\sol\compatibility.hpp" />
+    <ClInclude Include="3rdparty\sol\compatibility\compat-5.3.c.h" />
+    <ClInclude Include="3rdparty\sol\compatibility\compat-5.3.h" />
+    <ClInclude Include="3rdparty\sol\compatibility\compat-5.4.h" />
+    <ClInclude Include="3rdparty\sol\compatibility\lua_version.hpp" />
+    <ClInclude Include="3rdparty\sol\config.hpp" />
+    <ClInclude Include="3rdparty\sol\coroutine.hpp" />
+    <ClInclude Include="3rdparty\sol\debug.hpp" />
+    <ClInclude Include="3rdparty\sol\demangle.hpp" />
+    <ClInclude Include="3rdparty\sol\deprecate.hpp" />
+    <ClInclude Include="3rdparty\sol\detail\build_version.hpp" />
+    <ClInclude Include="3rdparty\sol\dump_handler.hpp" />
+    <ClInclude Include="3rdparty\sol\ebco.hpp" />
+    <ClInclude Include="3rdparty\sol\environment.hpp" />
+    <ClInclude Include="3rdparty\sol\epilogue.hpp" />
+    <ClInclude Include="3rdparty\sol\error.hpp" />
+    <ClInclude Include="3rdparty\sol\error_handler.hpp" />
+    <ClInclude Include="3rdparty\sol\forward.hpp" />
+    <ClInclude Include="3rdparty\sol\forward_detail.hpp" />
+    <ClInclude Include="3rdparty\sol\function.hpp" />
+    <ClInclude Include="3rdparty\sol\function_result.hpp" />
+    <ClInclude Include="3rdparty\sol\function_types.hpp" />
+    <ClInclude Include="3rdparty\sol\function_types_core.hpp" />
+    <ClInclude Include="3rdparty\sol\function_types_overloaded.hpp" />
+    <ClInclude Include="3rdparty\sol\function_types_stateful.hpp" />
+    <ClInclude Include="3rdparty\sol\function_types_stateless.hpp" />
+    <ClInclude Include="3rdparty\sol\function_types_templated.hpp" />
+    <ClInclude Include="3rdparty\sol\inheritance.hpp" />
+    <ClInclude Include="3rdparty\sol\in_place.hpp" />
+    <ClInclude Include="3rdparty\sol\load_result.hpp" />
+    <ClInclude Include="3rdparty\sol\lua_table.hpp" />
+    <ClInclude Include="3rdparty\sol\lua_value.hpp" />
+    <ClInclude Include="3rdparty\sol\make_reference.hpp" />
+    <ClInclude Include="3rdparty\sol\metatable.hpp" />
+    <ClInclude Include="3rdparty\sol\object.hpp" />
+    <ClInclude Include="3rdparty\sol\object_base.hpp" />
+    <ClInclude Include="3rdparty\sol\optional.hpp" />
+    <ClInclude Include="3rdparty\sol\optional_implementation.hpp" />
+    <ClInclude Include="3rdparty\sol\overload.hpp" />
+    <ClInclude Include="3rdparty\sol\packaged_coroutine.hpp" />
+    <ClInclude Include="3rdparty\sol\pairs_iterator.hpp" />
+    <ClInclude Include="3rdparty\sol\pointer_like.hpp" />
+    <ClInclude Include="3rdparty\sol\policies.hpp" />
+    <ClInclude Include="3rdparty\sol\prologue.hpp" />
+    <ClInclude Include="3rdparty\sol\property.hpp" />
+    <ClInclude Include="3rdparty\sol\protect.hpp" />
+    <ClInclude Include="3rdparty\sol\protected_function.hpp" />
+    <ClInclude Include="3rdparty\sol\protected_function_result.hpp" />
+    <ClInclude Include="3rdparty\sol\protected_handler.hpp" />
+    <ClInclude Include="3rdparty\sol\proxy_base.hpp" />
+    <ClInclude Include="3rdparty\sol\raii.hpp" />
+    <ClInclude Include="3rdparty\sol\reference.hpp" />
+    <ClInclude Include="3rdparty\sol\resolve.hpp" />
+    <ClInclude Include="3rdparty\sol\sol.hpp" />
+    <ClInclude Include="3rdparty\sol\stack.hpp" />
+    <ClInclude Include="3rdparty\sol\stack\detail\pairs.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_check.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_check_get.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_check_get_qualified.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_check_get_unqualified.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_check_qualified.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_check_unqualified.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_core.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_field.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_get.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_get_qualified.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_get_unqualified.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_guard.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_iterator.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_pop.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_probe.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_proxy.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_proxy_base.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_push.hpp" />
+    <ClInclude Include="3rdparty\sol\stack_reference.hpp" />
+    <ClInclude Include="3rdparty\sol\state.hpp" />
+    <ClInclude Include="3rdparty\sol\state_handling.hpp" />
+    <ClInclude Include="3rdparty\sol\state_view.hpp" />
+    <ClInclude Include="3rdparty\sol\string_view.hpp" />
+    <ClInclude Include="3rdparty\sol\table.hpp" />
+    <ClInclude Include="3rdparty\sol\table_core.hpp" />
+    <ClInclude Include="3rdparty\sol\table_iterator.hpp" />
+    <ClInclude Include="3rdparty\sol\table_proxy.hpp" />
+    <ClInclude Include="3rdparty\sol\thread.hpp" />
+    <ClInclude Include="3rdparty\sol\tie.hpp" />
+    <ClInclude Include="3rdparty\sol\traits.hpp" />
+    <ClInclude Include="3rdparty\sol\trampoline.hpp" />
+    <ClInclude Include="3rdparty\sol\tuple.hpp" />
+    <ClInclude Include="3rdparty\sol\types.hpp" />
+    <ClInclude Include="3rdparty\sol\unicode.hpp" />
+    <ClInclude Include="3rdparty\sol\unique_usertype_traits.hpp" />
+    <ClInclude Include="3rdparty\sol\unsafe_function.hpp" />
+    <ClInclude Include="3rdparty\sol\unsafe_function_result.hpp" />
+    <ClInclude Include="3rdparty\sol\userdata.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype_container.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype_container_launch.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype_core.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype_proxy.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype_storage.hpp" />
+    <ClInclude Include="3rdparty\sol\usertype_traits.hpp" />
+    <ClInclude Include="3rdparty\sol\variadic_args.hpp" />
+    <ClInclude Include="3rdparty\sol\variadic_results.hpp" />
+    <ClInclude Include="3rdparty\sol\version.hpp" />
+    <ClInclude Include="3rdparty\sol\wrapper.hpp" />
+    <ClInclude Include="3rdparty\stb\stb_image.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\anchor.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\binary.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\contrib\anchordict.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\contrib\graphbuilder.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\depthguard.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\dll.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitfromevents.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitter.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitterdef.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emittermanip.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\emitterstyle.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\eventhandler.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\exceptions.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\mark.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\convert.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\impl.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\iterator.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\iterator_fwd.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\memory.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node_data.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node_iterator.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\detail\node_ref.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\emit.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\impl.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\iterator.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\node.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\parse.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\ptr.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\node\type.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\noexcept.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\null.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\ostream_wrapper.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\parser.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\stlemitter.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\traits.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\include\yaml-cpp\yaml.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\collectionstack.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\contrib\graphbuilderadapter.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\directives.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\emitterstate.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\emitterutils.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\exp.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\indentation.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\nodebuilder.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\nodeevents.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\ptr_vector.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\regeximpl.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\regex_yaml.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\scanner.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\scanscalar.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\scantag.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\setting.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\singledocparser.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\stream.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\streamcharsource.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\stringsource.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\tag.h" />
+    <ClInclude Include="3rdparty\yaml-cpp\src\token.h" />
+    <ClInclude Include="src\Dua\Core\Random.h" />
+    <ClInclude Include="src\Dua\Core\Memory.h" />
+    <ClInclude Include="src\Dua\Core\Timestep.h" />
+    <ClInclude Include="src\Dua\LuaScript\LuaMathBindings.h" />
+    <ClInclude Include="src\Dua\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dua\Renderer\Framebuffer.h" />
+    <ClInclude Include="src\Dua\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Dua\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Dua\Renderer\Renderer.h" />
+    <ClInclude Include="src\Dua\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Dua\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Dua\Renderer\Shader.h" />
+    <ClInclude Include="src\Dua\Renderer\Texture.h" />
+    <ClInclude Include="src\Dua\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Dua\Renderer\Camera.h" />
+    <ClInclude Include="src\Dua\Scene\Components.h" />
+    <ClInclude Include="src\Dua\Scene\Entity.h" />
+    <ClInclude Include="src\Dua\LuaScript\LuaScriptComponent.h" />
+    <ClInclude Include="src\Dua\Scene\Scene.h" />
+    <ClInclude Include="src\Dua\Scene\SceneSerializer.h" />
+    <ClInclude Include="src\Dua\Scene\System.h" />
+    <ClInclude Include="src\Dua\Utils\PlatformUtils.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Dua\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Dua\Core\Input\Input.h" />
+    <ClInclude Include="src\Dua\Core\Input\InputCodes.h" />
+    <ClInclude Include="src\Dua\Layer\LayerStack.h" />
+    <ClInclude Include="src\Dua\Layer\Layer.h" />
+    <ClInclude Include="src\duapch.h" />
+    <ClInclude Include="src\Dua\Events\Event.h" />
+    <ClInclude Include="src\Dua\Events\KeyEvent.h" />
+    <ClInclude Include="src\Dua\Events\MouseEvent.h" />
+    <ClInclude Include="src\Dua\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Dua\Core\Application.h" />
+    <ClInclude Include="src\Dua.h" />
+    <ClInclude Include="src\Dua\EntryPoint.h" />
+    <ClInclude Include="src\Dua\Core\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Dua\Renderer\GraphicsContext.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="3rdparty\box2d\src\aabb.c" />
+    <ClCompile Include="3rdparty\box2d\src\arena_allocator.c" />
+    <ClCompile Include="3rdparty\box2d\src\array.c" />
+    <ClCompile Include="3rdparty\box2d\src\bitset.c" />
+    <ClCompile Include="3rdparty\box2d\src\body.c" />
+    <ClCompile Include="3rdparty\box2d\src\broad_phase.c" />
+    <ClCompile Include="3rdparty\box2d\src\constraint_graph.c" />
+    <ClCompile Include="3rdparty\box2d\src\contact.c" />
+    <ClCompile Include="3rdparty\box2d\src\contact_solver.c" />
+    <ClCompile Include="3rdparty\box2d\src\core.c" />
+    <ClCompile Include="3rdparty\box2d\src\distance.c" />
+    <ClCompile Include="3rdparty\box2d\src\distance_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\dynamic_tree.c" />
+    <ClCompile Include="3rdparty\box2d\src\geometry.c" />
+    <ClCompile Include="3rdparty\box2d\src\hull.c" />
+    <ClCompile Include="3rdparty\box2d\src\id_pool.c" />
+    <ClCompile Include="3rdparty\box2d\src\island.c" />
+    <ClCompile Include="3rdparty\box2d\src\joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\manifold.c" />
+    <ClCompile Include="3rdparty\box2d\src\math_functions.c" />
+    <ClCompile Include="3rdparty\box2d\src\motor_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\mouse_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\mover.c" />
+    <ClCompile Include="3rdparty\box2d\src\prismatic_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\revolute_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\sensor.c" />
+    <ClCompile Include="3rdparty\box2d\src\shape.c" />
+    <ClCompile Include="3rdparty\box2d\src\solver.c" />
+    <ClCompile Include="3rdparty\box2d\src\solver_set.c" />
+    <ClCompile Include="3rdparty\box2d\src\table.c" />
+    <ClCompile Include="3rdparty\box2d\src\timer.c" />
+    <ClCompile Include="3rdparty\box2d\src\types.c" />
+    <ClCompile Include="3rdparty\box2d\src\weld_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\wheel_joint.c" />
+    <ClCompile Include="3rdparty\box2d\src\world.c" />
+    <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_glfw.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_opengl3.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\backends\imgui_impl_win32.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_demo.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_draw.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_tables.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\imgui_widgets.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3rdparty/ImGui;3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="3rdparty\ImGui\misc\cpp\imgui_stdlib.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="3rdparty\stb\stb_image.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="3rdparty\yaml-cpp\src\binary.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\contrib\graphbuilder.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\contrib\graphbuilderadapter.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\convert.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\depthguard.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\directives.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\emit.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitfromevents.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitter.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitterstate.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\emitterutils.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\exceptions.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\exp.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\memory.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\node.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\nodebuilder.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\nodeevents.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\node_data.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\null.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\ostream_wrapper.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\parse.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\parser.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\regex_yaml.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\scanner.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\scanscalar.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\scantag.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\scantoken.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\simplekey.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\singledocparser.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\stream.cpp" />
+    <ClCompile Include="3rdparty\yaml-cpp\src\tag.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Dua\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Dua\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Dua\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Dua\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Dua\LuaScript\LuaScriptComponent.cpp" />
+    <ClCompile Include="src\Dua\Scene\Scene.cpp" />
+    <ClCompile Include="src\Dua\Scene\SceneSerializer.cpp" />
+    <ClCompile Include="src\Platform\Windows\PlatformUtils.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Dua\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Dua\Layer\LayerStack.cpp" />
+    <ClCompile Include="src\Dua\Layer\Layer.cpp" />
+    <ClCompile Include="src\duapch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Dua\Core\Application.cpp" />
+    <ClCompile Include="3rdparty\GLAD\glad.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="3rdparty\GLFW\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="3rdparty\ImGui\misc\debuggers\imgui.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3rdparty\ImGui\misc\debuggers\imgui.natstepfilter" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{0a69348f-b896-414c-911c-d18272c01171}</ProjectGuid>
+    <RootNamespace>DuaEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL;YAML_CPP_STATIC;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>3rdparty/luajit/src;3rdparty/yaml-cpp/include;3rdparty/box2d/include;3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>duapch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>GLFW/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>3rdparty</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL;YAML_CPP_STATIC;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>3rdparty/luajit/src;3rdparty/yaml-cpp/include;3rdparty/box2d/include;3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>duapch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>GLFW/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>3rdparty</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL;YAML_CPP_STATIC;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>3rdparty/luajit/src;3rdparty/yaml-cpp/include;3rdparty/box2d/include;3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>duapch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>GLFW/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>3rdparty</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS;DUA_BUILD_DLL;YAML_CPP_STATIC;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>3rdparty/luajit/src;3rdparty/yaml-cpp/include;3rdparty/box2d/include;3rdparty/ImGui;3rdparty;src</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>duapch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>GLFW/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>3rdparty</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
