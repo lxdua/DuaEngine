@@ -70,7 +70,6 @@ namespace Dua {
     class TransformSystem
     {
     public:
-        // 更新所有带脏标记的变换组件
         static void UpdateTransforms(entt::registry& registry)
         {
             auto view = registry.view<TransformComponent>();
@@ -80,12 +79,11 @@ namespace Dua {
                 if (transform.Dirty)
                 {
                     UpdateTransform(transform);
-                    transform.Dirty = false; // 清除脏标记
+                    transform.Dirty = false;
                 }
             }
         }
 
-        // 强制更新某个实体的变换（即使没有脏标记）
         static void ForceUpdateTransform(entt::registry& registry, entt::entity entity)
         {
             auto& transform = registry.get<TransformComponent>(entity);
@@ -94,7 +92,6 @@ namespace Dua {
         }
 
     private:
-        // 实际计算变换矩阵的逻辑
         static void UpdateTransform(TransformComponent& transform)
         {
             const glm::mat4 translation = glm::translate(glm::mat4(1.0f), transform.Position);
@@ -108,4 +105,38 @@ namespace Dua {
         }
     };
 
+    class SpriteSystem
+    {
+    public:
+        static void DrawSprite(entt::registry& registry)
+        {
+            for (auto [entity, transform, sprite] :
+                registry.view<TransformComponent, SpriteComponent>().each())
+            {
+                if (sprite.Show)
+                {
+                    Renderer2D::DrawQuad(transform.Transform, sprite.Texture, sprite.Modulate);
+                }
+            }
+        }
+    };
+
+    class PhysicsSystem
+    {
+    public:
+        static void UpdatePhysics(entt::registry& registry, b2WorldId worldId, Timestep ts)
+        {
+            int subStepCount = 4;
+            b2World_Step(worldId, ts, subStepCount);
+
+            for (auto& [entity, transform, rigidbody2d] :
+                registry.view<TransformComponent, Rigidbody2DComponent>().each())
+            {
+                b2Vec2 position = b2Body_GetPosition(rigidbody2d.BodyId);
+                transform.SetPosition({ position.x, position.y, transform.Position.z });
+                b2Rot rotation = b2Body_GetRotation(rigidbody2d.BodyId);
+                transform.SetRotation(b2Rot_GetAngle(rotation));
+            }
+        }
+    };
 }

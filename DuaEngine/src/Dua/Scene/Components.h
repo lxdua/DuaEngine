@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "glm/glm.hpp"
+#include "box2d/box2d.h"
 #include "Dua/Renderer/Camera.h"
 #include "Dua/Renderer/Texture.h"
 
@@ -78,6 +79,7 @@ namespace Dua {
 		SpriteComponent(const Ref<Texture2D> texture) : Texture(texture) {}
 		SpriteComponent(const Ref<Texture2D> texture, const glm::vec4 modulate) : Texture(texture), Modulate(modulate) {}
 	};
+
 	/*
 	struct ColorRectComponent
 	{
@@ -98,4 +100,31 @@ namespace Dua {
 		CameraComponent(const glm::mat4& projection) : Camera(projection) {}
 	};
 	*/
+
+	// Physics
+
+	struct Rigidbody2DComponent
+	{
+		float Mass = 1.0f;
+		float LinearDamping = 0.0f;
+		float AngularDamping = 0.05f;
+		bool FixedRotation = false;
+		b2Vec2 Velocity{ 0,0 };
+
+		b2Polygon Polygon;
+
+		b2BodyId BodyId;
+
+		Rigidbody2DComponent() = default;
+		Rigidbody2DComponent(const Rigidbody2DComponent&) = default;
+	};
+
+	struct StaticBody2DComponent
+	{
+		void* RuntimeBody = nullptr;
+
+		StaticBody2DComponent() = default;
+		StaticBody2DComponent(const StaticBody2DComponent&) = default;
+	};
+
 }

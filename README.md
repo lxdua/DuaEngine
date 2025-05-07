@@ -12,10 +12,11 @@
 ## 🗓️ 里程
 
 - **（持续更新中。。。）** 🔨
-- **2025/05/03** 接入了lua
+- **2025/05/06** 接入box2d初步
+- **2025/05/03** 接入了lua初步
 - **2025/04/30** 资源浏览器初步
 - **2025/04/29** 序列化反序列化实现（还不支持原生脚本）
-- **2025/04/22** 加了个yaml的库以后做场景保存，然后看看ecs要不要自己写一个
+- **2025/04/22** 加了个yaml的库以后做场景保存
 - **2025/04/14** 场景管理窗口初步（还只有sprite和transform）
 - **2025/04/13** 加入了cpp原生脚本组件
 - **2025/04/12** 加入entt，加入了sprite组件
@@ -34,15 +35,20 @@
 ## 🫓 画饼
 
 - 文件系统
+- 相机组件
 - 将Box2d作为物理模块
 - 将ENet作为网络模块
 
 ---
 
-## 🗒️ 待办和Bug
+## 🗒️ 待办
 
 - 在OpenScene的时候 entt时不时报错：Assertion failed: ((has_single_bit(mod)) && ("Value must be a power of two"))
 - Lua直接修改Position分量的时候无法触发set
+- 运行模式切换回编辑模式的时候复原场景
+- 物理组件补全
+- Lua集成补全
+- 剩余组件序列化反序列化补全
 - ~~删除Sprite的时候可能是Renderer2D有问题图片会残留在上面（已修复，OpenGLRendererAPI有个地方写反了）~~
 - ~~鼠标缩放应该只能在鼠标悬浮在viewport上的时候才起效（已解决）~~
 
@@ -56,3 +62,4 @@
 - [ImGui](https://github.com/ocornut/imgui/tree/docking) - 即时模式调试UI框架 
 - [EnTT](https://github.com/skypjack/entt) - ECS框架 
 - [LuaJIT](https://luajit.org/) - Lua脚本语言
+- [Box2d](https://box2d.org/) - 2d物理引擎

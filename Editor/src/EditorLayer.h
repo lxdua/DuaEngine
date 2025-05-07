@@ -12,6 +12,13 @@
 
 namespace Dua {
 
+	enum class EditorRuntimeState
+	{
+		Editing,    // 编辑模式
+		Running,    // 运行模式
+		//Paused      // 暂停模式
+	};
+
 	class EditorLayer : public Layer
 	{
 	public:
@@ -27,21 +34,21 @@ namespace Dua {
 
 		void OpenFile(const std::filesystem::path& path);
 
+		void ToggleRuntimeState(EditorRuntimeState state);
+
 	private:
 
 		Ref<Scene> m_Scene;
+		Ref<Scene> m_BackupScene;
 
 		OrthographicCameraController m_CameraController;
 		ShaderLibrary m_ShaderLib;
 
 		glm::vec2 m_ViewportSize = { 1280.0f,720.0f };
 
-		Ref<Shader> m_SquareShader;
-		Ref<VertexArray> m_SquareVA;
-
 		Ref<Framebuffer> m_Framebuffer;
 
-		Ref<Texture2D> m_Texture;
+		EditorRuntimeState m_RuntimeState;
 
 		// UI
 		Ref<TopMenu> m_TopMenu;

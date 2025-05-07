@@ -9,14 +9,14 @@ namespace Dua {
 
     void EditorLayer::OnAttach()
     {
-        m_Texture = Texture2D::Create("Assets/Textures/ntx.png");
-
         FramebufferSpecification fbSpec;
         fbSpec.Width = 1280;
         fbSpec.Height = 720;
         m_Framebuffer = Framebuffer::Create(fbSpec);
 
         m_Scene = CreateRef<Scene>();
+
+        m_RuntimeState = EditorRuntimeState::Editing;
 
         // UI
         m_TopMenu = CreateRef<TopMenu>(this);
@@ -49,7 +49,12 @@ namespace Dua {
         RenderCommand::Clear();
 
         Renderer2D::BeginScene(m_CameraController.GetCamera());
-        m_Scene->OnUpdate(ts);
+
+        if (m_RuntimeState == EditorRuntimeState::Editing)
+            m_Scene->OnUpdate(ts);
+        else if (m_RuntimeState == EditorRuntimeState::Running)
+            m_Scene->OnRuntimeUpdate(ts);
+
         Renderer2D::EndScene();
 
         m_Framebuffer->UnBind();
@@ -124,6 +129,23 @@ namespace Dua {
         else
         {
             std::cout << "Unsupported file type: " << ext;
+        }
+    }
+
+    void EditorLayer::ToggleRuntimeState(EditorRuntimeState state)
+    {
+        if (state == EditorRuntimeState::Editing)
+        {
+            m_Scene->OnRuntimeStop();
+
+            m_RuntimeState = EditorRuntimeState::Editing;
+        }
+        else if (state == EditorRuntimeState::Running)
+        {
+
+            m_Scene->OnRuntimeStart();
+            
+            m_RuntimeState = EditorRuntimeState::Running;
         }
     }
 

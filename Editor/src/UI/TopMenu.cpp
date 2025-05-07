@@ -19,9 +19,21 @@ namespace Dua {
         {
             DrawLeftMenu();
             ImGui::SameLine(ImGui::GetWindowContentRegionMax().x * 0.8f);
-            if (ImGui::Button("Run"))
+            if (m_EditorLayer->m_RuntimeState == EditorRuntimeState::Editing)
             {
-                //m_EditorLayer->ToggleRuntime();
+                if (ImGui::Button("Run"))
+                {
+                    m_EditorLayer->ToggleRuntimeState(EditorRuntimeState::Running);
+                    std::cout << "Run" << std::endl;
+                }
+            }
+            else if (m_EditorLayer->m_RuntimeState == EditorRuntimeState::Running)
+            {
+                if (ImGui::Button("Stop"))
+                {
+                    m_EditorLayer->ToggleRuntimeState(EditorRuntimeState::Editing);
+                    std::cout << "Stop" << std::endl;
+                }
             }
             ImGui::EndMenuBar();
         }

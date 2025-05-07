@@ -80,7 +80,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\box2d\include;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -103,7 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\box2d\include;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -126,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\box2d\include;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -149,7 +149,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DUA_PLATFORM_WINDOWS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Editor\src;$(SolutionDir)DuaEngine\3rdparty;$(SolutionDir)DuaEngine\src;$(SolutionDir)DuaEngine\3rdparty\box2d\include;$(SolutionDir)DuaEngine\3rdparty\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>

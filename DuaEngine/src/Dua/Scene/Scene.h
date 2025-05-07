@@ -2,6 +2,7 @@
 
 #include "entt/entt.hpp"
 #include "Dua/Core/Timestep.h"
+#include "box2d/box2d.h"
 
 namespace Dua {
 
@@ -13,8 +14,8 @@ namespace Dua {
 	class Scene
 	{
 	public:
-		Scene();
-		~Scene();
+		Scene() = default;
+		~Scene() = default;
 
 		Ref<Entity> CreateEntity(const std::string name = "");
 		void DestroyEntity(Ref<Entity> entity);
@@ -22,8 +23,14 @@ namespace Dua {
 		void OnUpdate(Timestep ts);
 		void OnDestory();
 
+		void OnRuntimeStart();
+		void OnRuntimeUpdate(Timestep ts);
+		void OnRuntimeStop();
+
 		entt::registry m_Registry;
 		std::unordered_map<entt::entity, Ref<Entity>> m_EntityMap;
+
+		b2WorldId m_PhysicsWorldId;
 	};
 
 }
