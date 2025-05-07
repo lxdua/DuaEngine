@@ -5,18 +5,16 @@ namespace Dua {
 	class Timestep
 	{
 	public:
-		Timestep(float time = 0.0f)
-			: m_Time(time)
-		{
-		}
+		Timestep(double time = 0.0f)
+			: m_Time(time) {}
 
-		operator float() const { return m_Time; }
+		operator double() const { return m_Time; }
 
-		float GetSecond() const { return m_Time; }
-		float GetMillisecond() const { return m_Time * 1000.0f; }
+		double GetSecond() const { return m_Time; }
+		double GetMillisecond() const { return m_Time * 1000.0f; }
 
 	private:
-		float m_Time = 0.0f;
+		double m_Time = 0.0f;
 	};
 
 }

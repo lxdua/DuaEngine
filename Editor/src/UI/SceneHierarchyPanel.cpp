@@ -484,13 +484,10 @@ namespace Dua {
 			{
 				auto& transform = entity->GetComponent<TransformComponent>();
 
-				// 位置控件（带重置功能）
 				bool positionChanged = DrawVec3Control("Position", transform.Position);
 
-				// 缩放控件（重置值为1.0）
 				bool scaleChanged = DrawVec3Control("Scale", transform.Scale, 1.0f);
 
-				// 旋转控件（保持原有逻辑）
 				float rotationDegrees = glm::degrees(transform.Rotation);
 				bool rotationChanged = DrawFloatControl("Rotation", rotationDegrees, 0.0f);
 				if (rotationChanged)
@@ -498,7 +495,6 @@ namespace Dua {
 					transform.SetRotation(glm::radians(rotationDegrees));
 				}
 
-				// 检测任何变化
 				if (positionChanged || scaleChanged || rotationChanged)
 				{
 					transform.Dirty = true;

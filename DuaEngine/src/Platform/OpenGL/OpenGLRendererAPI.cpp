@@ -2,6 +2,7 @@
 #include "OpenGLRendererAPI.h"
 
 #include "GLAD/glad.h"
+#include "GLFW/glfw3.h"
 
 namespace Dua {
 
@@ -11,6 +12,11 @@ namespace Dua {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glEnable(GL_DEPTH_TEST);
+	}
+
+	double OpenGLRendererAPI::GetTime()
+	{
+		return glfwGetTime();
 	}
 
 	void OpenGLRendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)

@@ -34,21 +34,22 @@
 
 ## 🫓 画饼
 
-- 文件系统
-- 相机组件
-- 将Box2d作为物理模块
+- 想一个独特的文件系统（工程 场景 预制体 资源 什么的）
 - 将ENet作为网络模块
 
 ---
 
 ## 🗒️ 待办
 
-- 在OpenScene的时候 entt时不时报错：Assertion failed: ((has_single_bit(mod)) && ("Value must be a power of two"))
+- 在OpenScene的时候 entt时不时报错：Assertion failed: ((has_single_bit(mod)) && ("Value must be a power of two")) 但是好像好久都没见到了还是说被我不小心修了我没注意到？
 - Lua直接修改Position分量的时候无法触发set
 - 运行模式切换回编辑模式的时候复原场景
-- 物理组件补全
+- 物理组件读取到SceneHierarchy
 - Lua集成补全
 - 剩余组件序列化反序列化补全
+- 主循环分离
+- 物理体碰撞盒编辑方式以及编辑时视窗内显示
+- 相机组件
 - ~~删除Sprite的时候可能是Renderer2D有问题图片会残留在上面（已修复，OpenGLRendererAPI有个地方写反了）~~
 - ~~鼠标缩放应该只能在鼠标悬浮在viewport上的时候才起效（已解决）~~
 

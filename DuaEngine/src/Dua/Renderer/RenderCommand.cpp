@@ -7,6 +7,11 @@ namespace Dua {
 
 	Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
 
+	double RenderCommand::GetTime()
+	{
+		return s_RendererAPI->GetTime();
+	}
+
 	void RenderCommand::Init()
 	{
 		s_RendererAPI->Init();

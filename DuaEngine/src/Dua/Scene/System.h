@@ -124,10 +124,18 @@ namespace Dua {
 
     class PhysicsSystem
     {
+    private:
+        static inline const double m_PhysicsTimestep = 0.01;
+        static inline double m_PhysicsTimeAccumulator = 0.0;
+
     public:
 
         static void PhysicsStart(entt::registry& registry, b2WorldId& worldId)
         {
+            m_PhysicsTimeAccumulator = 0.0;
+
+            /*----------*/
+
             b2WorldDef m_Box2DWorldDef = b2DefaultWorldDef();
             m_Box2DWorldDef.gravity = b2Vec2({ 0.0f, -10.0f });
 
@@ -153,17 +161,27 @@ namespace Dua {
 
         static void PhysicsUpdate(entt::registry& registry, b2WorldId worldId, Timestep ts)
         {
-            int subStepCount = 4;
-            b2World_Step(worldId, ts, subStepCount);
+            m_PhysicsTimeAccumulator += ts;
 
-            for (auto [entity, transform, physicsbody2d] :
-                registry.view<TransformComponent, Physicsbody2DComponent>().each())
+            while (m_PhysicsTimeAccumulator >= m_PhysicsTimestep)
             {
-                b2Vec2 position = b2Body_GetPosition(physicsbody2d.BodyId);
-                transform.SetPosition({ position.x, position.y, transform.Position.z });
-                b2Rot rotation = b2Body_GetRotation(physicsbody2d.BodyId);
-                transform.SetRotation(b2Rot_GetAngle(rotation));
-            }
+                m_PhysicsTimeAccumulator -= m_PhysicsTimestep;
+                std::cout << "PhysicsUpdate" << std::endl;
+                /*----------*/
+
+                int subStepCount = 4;
+                b2World_Step(worldId, ts, subStepCount);
+
+                for (auto [entity, transform, physicsbody2d] :
+                    registry.view<TransformComponent, Physicsbody2DComponent>().each())
+                {
+                    b2Vec2 position = b2Body_GetPosition(physicsbody2d.BodyId);
+                    transform.SetPosition({ position.x, position.y, transform.Position.z });
+                    b2Rot rotation = b2Body_GetRotation(physicsbody2d.BodyId);
+                    transform.SetRotation(b2Rot_GetAngle(rotation));
+                }
+
+            } 
         }
     };
 }

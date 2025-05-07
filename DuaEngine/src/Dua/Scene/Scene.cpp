@@ -58,9 +58,13 @@ namespace Dua {
 	void Scene::OnRuntimeUpdate(Timestep ts)
 	{
 		LuaScriptSystem::UpdateScripts(m_Registry, *this, ts);
+
 		PhysicsSystem::PhysicsUpdate(m_Registry, m_PhysicsWorldId, ts);
+
 		TransformSystem::UpdateTransforms(m_Registry);
 		SpriteSystem::DrawSprite(m_Registry);
+
+		std::cout << "Update" << std::endl;
 	}
 
 	void Scene::OnRuntimeStop()
