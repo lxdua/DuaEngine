@@ -30,10 +30,17 @@ namespace Dua {
         // 创建实体
         auto rotatingEntity = m_Scene->CreateEntity("Rotating Cube");
         // 添加必须的组件
-        auto& sprite = rotatingEntity->AddComponent<SpriteComponent>();
+        rotatingEntity->AddComponent<SpriteComponent>();
         // 添加 Lua 脚本组件并绑定脚本
         auto& luaScript = rotatingEntity->AddComponent<LuaScriptComponent>(rotatingEntity.get());
         luaScript.LoadScript("Scripts/Try.lua");
+
+        auto physicsEntity = m_Scene->CreateEntity("Rigidbody Cube");
+        physicsEntity->AddComponent<SpriteComponent>();
+        auto& physicsBody = physicsEntity->AddComponent<Physicsbody2DComponent>();
+        physicsBody.BodyType = b2BodyType::b2_dynamicBody;
+        physicsBody.Polygon = b2MakeBox(1.0f, 1.0f);
+
     }
 
     void EditorLayer::OnDetach()
@@ -62,9 +69,6 @@ namespace Dua {
 
     void InitImGui()
     {
-        //-----------------------------
-        // 1. 全屏基础设置
-        //-----------------------------
         static bool dockspaceOpen = true;
         static ImGuiDockNodeFlags dockspaceFlags = ImGuiDockNodeFlags_None;
         const ImGuiViewport* viewport = ImGui::GetMainViewport();
@@ -82,9 +86,7 @@ namespace Dua {
             ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
             ImGuiWindowFlags_NoBringToFrontOnFocus;
 
-        //-----------------------------
-        // 2. 主窗口和DockSpace
-        //-----------------------------
+
         ImGui::Begin("Editor Dockspace", &dockspaceOpen, windowFlags);
         ImGui::PopStyleVar(2);
 

@@ -101,30 +101,17 @@ namespace Dua {
 	};
 	*/
 
-	// Physics
-
-	struct Rigidbody2DComponent
+	struct Physicsbody2DComponent
 	{
-		float Mass = 1.0f;
-		float LinearDamping = 0.0f;
-		float AngularDamping = 0.05f;
+		b2BodyId BodyId;
+		b2Polygon Polygon;
+		b2BodyType BodyType;
+
 		bool FixedRotation = false;
 		b2Vec2 Velocity{ 0,0 };
 
-		b2Polygon Polygon;
-
-		b2BodyId BodyId;
-
-		Rigidbody2DComponent() = default;
-		Rigidbody2DComponent(const Rigidbody2DComponent&) = default;
-	};
-
-	struct StaticBody2DComponent
-	{
-		void* RuntimeBody = nullptr;
-
-		StaticBody2DComponent() = default;
-		StaticBody2DComponent(const StaticBody2DComponent&) = default;
+		Physicsbody2DComponent() = default;
+		Physicsbody2DComponent(const Physicsbody2DComponent&) = default;
 	};
 
 }

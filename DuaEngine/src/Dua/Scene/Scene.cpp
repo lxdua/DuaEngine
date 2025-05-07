@@ -52,38 +52,14 @@ namespace Dua {
 
 	void Scene::OnRuntimeStart()
 	{
-		b2WorldDef m_Box2DWorldDef = b2DefaultWorldDef();
-		m_Box2DWorldDef.gravity = b2Vec2({ 0.0f, -10.0f });
-
-		m_PhysicsWorldId = b2CreateWorld(&m_Box2DWorldDef);
-
-		auto view = m_Registry.view<TransformComponent, Rigidbody2DComponent>();
-		for (auto &[entity, transform, rigidbody2d] : view.each())
-		{
-			b2BodyDef bodyDef = b2DefaultBodyDef();
-			bodyDef.position = b2Vec2({ transform.Position.x, transform.Position.y});
-			bodyDef.rotation = b2MakeRot(transform.Rotation);
-			bodyDef.fixedRotation = rigidbody2d.FixedRotation;
-			bodyDef.type = b2BodyType::b2_dynamicBody;
-
-			rigidbody2d.BodyId = b2CreateBody(m_PhysicsWorldId, &bodyDef);
-
-			b2Polygon polygon = rigidbody2d.Polygon;
-			b2ShapeDef shapeDef = b2DefaultShapeDef();
-			b2CreatePolygonShape(rigidbody2d.BodyId, &shapeDef, &polygon);
-		}
-
+		PhysicsSystem::PhysicsStart(m_Registry, m_PhysicsWorldId);
 	}
 
 	void Scene::OnRuntimeUpdate(Timestep ts)
 	{
 		LuaScriptSystem::UpdateScripts(m_Registry, *this, ts);
+		PhysicsSystem::PhysicsUpdate(m_Registry, m_PhysicsWorldId, ts);
 		TransformSystem::UpdateTransforms(m_Registry);
-
-		// Physics
-		PhysicsSystem::UpdatePhysics(m_Registry, m_PhysicsWorldId, ts);
-
-		// Render
 		SpriteSystem::DrawSprite(m_Registry);
 	}
 

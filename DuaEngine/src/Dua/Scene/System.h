@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Dua/Renderer/Renderer2D.h"
 #include "entt/entt.hpp"
 #include "Components.h"
 #include "Dua/LuaScript/LuaScriptComponent.h"
@@ -124,17 +125,43 @@ namespace Dua {
     class PhysicsSystem
     {
     public:
-        static void UpdatePhysics(entt::registry& registry, b2WorldId worldId, Timestep ts)
+
+        static void PhysicsStart(entt::registry& registry, b2WorldId& worldId)
+        {
+            b2WorldDef m_Box2DWorldDef = b2DefaultWorldDef();
+            m_Box2DWorldDef.gravity = b2Vec2({ 0.0f, -10.0f });
+
+            worldId = b2CreateWorld(&m_Box2DWorldDef);
+
+            auto view = registry.view<TransformComponent, Physicsbody2DComponent>();
+            for (auto [entity, transform, physicsbody2d] : view.each())
+            {
+                b2BodyDef bodyDef = b2DefaultBodyDef();
+                bodyDef.position = b2Vec2({ transform.Position.x, transform.Position.y });
+                bodyDef.rotation = b2MakeRot(transform.Rotation);
+                bodyDef.fixedRotation = physicsbody2d.FixedRotation;
+
+                bodyDef.type = physicsbody2d.BodyType;
+
+                physicsbody2d.BodyId = b2CreateBody(worldId, &bodyDef);
+
+                b2Polygon polygon = physicsbody2d.Polygon;
+                b2ShapeDef shapeDef = b2DefaultShapeDef();
+                b2CreatePolygonShape(physicsbody2d.BodyId, &shapeDef, &polygon);
+            }
+        }
+
+        static void PhysicsUpdate(entt::registry& registry, b2WorldId worldId, Timestep ts)
         {
             int subStepCount = 4;
             b2World_Step(worldId, ts, subStepCount);
 
-            for (auto& [entity, transform, rigidbody2d] :
-                registry.view<TransformComponent, Rigidbody2DComponent>().each())
+            for (auto [entity, transform, physicsbody2d] :
+                registry.view<TransformComponent, Physicsbody2DComponent>().each())
             {
-                b2Vec2 position = b2Body_GetPosition(rigidbody2d.BodyId);
+                b2Vec2 position = b2Body_GetPosition(physicsbody2d.BodyId);
                 transform.SetPosition({ position.x, position.y, transform.Position.z });
-                b2Rot rotation = b2Body_GetRotation(rigidbody2d.BodyId);
+                b2Rot rotation = b2Body_GetRotation(physicsbody2d.BodyId);
                 transform.SetRotation(b2Rot_GetAngle(rotation));
             }
         }
